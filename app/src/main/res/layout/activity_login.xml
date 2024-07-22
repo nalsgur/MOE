@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="84dp"
+        android:layout_height="33.9dp"
+        android:src="@drawable/moe_logo"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="310dp"
+        android:layout_height="48dp"
+        android:hint="아이디 (전화번호)"
+        android:textSize="14sp"
+        android:textColor="#909090"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp"
+        android:fontFamily="@font/freesentation5"
+        android:background="@drawable/login_text_border"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="310dp"
+        android:layout_height="48dp"
+        android:hint="비밀번호"
+        android:textSize="14sp"
+        android:textColor="#606060"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="13dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="13dp"
+        android:fontFamily="@font/freesentation5"
+        android:background="@drawable/login_text_border"/>
+
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/find_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="비밀번호 찾기"
+            android:fontFamily="@font/freesentation5"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="310dp"
+        android:layout_height="48dp"
+        android:text="로그인하기"
+        android:fontFamily="@font/freesentation5"
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/login_button"
+        android:layout_marginTop="20dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/social_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="SNS 계정으로 로그인"
+        android:fontFamily="@font/freesentation5"
+        android:textColor="#2F2F2F"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/login_ic_kakao"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/login_ic_naver"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/login_ic_google"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="122dp"
+        android:layout_marginBottom="43dp"
+        android:text="회원가입하러 가기!"
+        android:fontFamily="@font/freesentation6"
+        android:textColor="#2F2F2F"
+        android:textSize="15sp" />
+
+</LinearLayout>
+
