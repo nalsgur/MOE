@@ -32,9 +32,6 @@ class RecentSearchRVAdapter (private val search: List<Search>, private val viewM
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(search[position])
-//        holder.binding.delete.setOnClickListener {
-//            remove(position)
-//        }
         holder.binding.searchItemCl.setOnClickListener {
             mItemClickListener.onClickItem(search[position])
         }
@@ -53,11 +50,5 @@ class RecentSearchRVAdapter (private val search: List<Search>, private val viewM
             binding.time.text = date
         }
     }
-
-//    @SuppressLint("NotifyDataSetChanged")
-//    fun remove(position: Int){
-//        search.removeAt(position)
-//        notifyDataSetChanged()
-//    }
 
 }

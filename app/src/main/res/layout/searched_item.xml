@@ -10,18 +10,6 @@
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="5.5dp">
 
-    <ImageView
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="TODO"
-        android:src="@drawable/search_delete"
-        android:elevation="10dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="6dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/photo"
         android:layout_width="145dp"

@@ -51,7 +51,6 @@ class SearchRVAdapter (search: List<Search>, private val viewModel: ViewModel): 
             binding.itemTitle.text = search.title
             val date = search.startDate.substring(0,10).replace("-", ".") + " ~ " + search.endDate.substring(0,10).replace("-", ".")
             binding.time.text = date
-            binding.delete.visibility = View.GONE
             updateLikeIcon(search.follow)
 
             binding.favoriteIv.setOnClickListener {

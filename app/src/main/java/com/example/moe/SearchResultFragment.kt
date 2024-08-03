@@ -76,6 +76,7 @@ class SearchResultFragment(private val viewModel: ViewModel) : Fragment() {
             override fun onClickItem(search: Search) {
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra("search", search)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
 
