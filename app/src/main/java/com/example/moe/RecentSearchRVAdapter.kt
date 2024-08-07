@@ -1,18 +1,13 @@
 package com.example.moe
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.moe.databinding.SearchedItemBinding
 
 
-class RecentSearchRVAdapter (private val search: List<Search>, private val viewModel: ViewModel): RecyclerView.Adapter<RecentSearchRVAdapter.ViewHolder>() {
+class RecentSearchRVAdapter (private val search: List<Search>, private val viewModel: SearchViewModel): RecyclerView.Adapter<RecentSearchRVAdapter.ViewHolder>() {
 
     interface MyItemClickListener{
         fun onClickItem(search: Search)

@@ -8,6 +8,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Search(
+    @SerializedName("id") val id: Int,
     @SerializedName("name") val title: String,
     @SerializedName("photo") val photo: String,
     @SerializedName("startDate") val startDate: String,

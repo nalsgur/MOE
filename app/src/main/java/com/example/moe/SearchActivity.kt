@@ -3,21 +3,18 @@ package com.example.moe
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.moe.databinding.ActivitySearchBinding
 
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
-    private val viewModel: ViewModel by viewModels()
+    private val viewModel: SearchViewModel by viewModels()
     private var curFragment = 0
 
     @SuppressLint("ClickableViewAccessibility")
@@ -37,7 +34,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchEt.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH && binding.searchEt.text.length >= 2) {
-                viewModel.getSearchData(1, binding.searchEt.text.toString(), 0)
+                viewModel.getSearchData(2, binding.searchEt.text.toString(), 0)
                 changeFragment(1)
                 hideKeyboard()
                 true
@@ -50,11 +47,11 @@ class SearchActivity : AppCompatActivity() {
         binding.searchEt.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus && curFragment == 1) {
                 changeFragment(0)
-                viewModel.getRecentSearchData(1)
+                viewModel.getRecentSearchData(2)
             }
         }
 
-        viewModel.getRecentSearchData(1)
+        viewModel.getRecentSearchData(2)
 
         binding.root.setOnTouchListener { _, _ ->
             hideKeyboard()

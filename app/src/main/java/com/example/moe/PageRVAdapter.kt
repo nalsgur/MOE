@@ -1,21 +1,13 @@
 package com.example.moe
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.Visibility
 import com.example.moe.databinding.ItemPageBinding
-import com.example.moe.databinding.SearchedItemBinding
-import kotlin.math.min
 
 
-class PageRVAdapter(private val pageIndexList: List<Int>, private val viewModel: ViewModel): RecyclerView.Adapter<PageRVAdapter.ViewHolder>() {
+class PageRVAdapter(private val pageIndexList: List<Int>, private val viewModel: SearchViewModel): RecyclerView.Adapter<PageRVAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemPageBinding = ItemPageBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)

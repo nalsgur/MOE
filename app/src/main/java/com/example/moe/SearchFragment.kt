@@ -7,14 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.widget.GridLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moe.databinding.FragmentSearchBinding
 
-class SearchFragment(private val viewModel: ViewModel) : Fragment() {
+class SearchFragment(private val viewModel: SearchViewModel) : Fragment() {
     private lateinit var binding : FragmentSearchBinding
 
     override fun onCreateView(

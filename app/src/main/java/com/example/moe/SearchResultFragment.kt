@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moe.databinding.FragmentSearchResultBinding
 
-class SearchResultFragment(private val viewModel: ViewModel) : Fragment() {
+class SearchResultFragment(private val viewModel: SearchViewModel) : Fragment() {
     private lateinit var binding : FragmentSearchResultBinding
 
     override fun onCreateView(
@@ -76,7 +76,6 @@ class SearchResultFragment(private val viewModel: ViewModel) : Fragment() {
             override fun onClickItem(search: Search) {
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra("search", search)
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
 

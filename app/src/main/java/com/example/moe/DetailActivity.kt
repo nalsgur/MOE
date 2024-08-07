@@ -14,14 +14,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.example.moe.databinding.ActivityDetailBinding
 import com.example.moe.databinding.RecordDialogBinding
+import com.example.moe.record.Photo
+import com.example.moe.record.RecordService
+import com.example.moe.record.RecordViewModel
 
 class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
     private lateinit var binding: ActivityDetailBinding
+    private lateinit var search: Search
+    private val viewModel: RecordViewModel by viewModels()
 
     private val requestPermissions = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
         results.entries.forEach{
@@ -49,9 +55,10 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
             } else if (data?.data != null) {
                 // 단일 이미지를 선택한 경우
                 val imageUri = data.data
-                finishAffinity() //메인 activity로 돌아감 mainActivity에서 기록 프래그먼트로 전환해야 함
-                TODO("post ticket image to server")
-                TODO("bundle로 기록 프래그먼트에 데이터 전달")
+                val photo = Photo(listOf(imageUri.toString()))
+                val recordService = RecordService()
+                recordService.uploadPhoto(search.id, photo)
+                finishAffinity() //MainActivity로 돌아감 MainActivity에서 기록 프래그먼트로 전환해야 함
             }
         }
     }
@@ -60,7 +67,7 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
 
-        val search: Search = intent.getParcelableExtra("search")!!
+        search = intent.getParcelableExtra("search")!!
 
         Glide.with(this)
             .load(search.photo)
@@ -94,8 +101,6 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
     override fun onYesButtonClick() {
         requestStorage()
     }
-
-
 }
 
 class ConfirmDialog(
