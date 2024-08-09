@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_home"
+        android:icon="@drawable/main_nav_home_icon"
+        android:title="홈"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/fragment_map"
+        android:icon="@drawable/main_nav_map_icon"
+        android:title="지역"/>
+
+    <item
+        android:id="@+id/fragment_diary"
+        android:icon="@drawable/main_nav_diary_icon"
+        android:title="기록"/>
+
+    <item
+        android:id="@+id/fragment_follow"
+        android:icon="@drawable/main_nav_heart_icon"
+        android:title="팔로우"/>
+
+    <item
+        android:id="@+id/fragment_mypage"
+        android:icon="@drawable/main_nav_menu_icon"
+        android:title="내 정보"/>
+
+</menu>
