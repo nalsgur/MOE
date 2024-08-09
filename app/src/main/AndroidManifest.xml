@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -10,17 +9,70 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MOE"
-        tools:targetApi="31">
+        android:theme="@style/Theme.MOE">
+        <activity
+            android:name=".signup.Signup_Login_Finish_Activity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".signup.Signup_Login_Name_Activity"
+            android:exported="true" >
+
+
+        </activity>
+        <activity
+            android:name=".signup.Signup_Login_Activity"
+            android:exported="true">
+
+
+        </activity>
+        <activity
+            android:name=".signup.Signup_activity"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".mypage.Mypage_Marketing_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".mypage.Mypage_Privacy_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".mypage.Mypage_Use_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".mypage.Mypage_Introduce_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".mypage.Mypage_QNA_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".mypage.Mypage_Inputaccount_Activity"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".mypage.Mypage_Account_Activity"
+            android:exported="true" >
+
+
+
+        </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".mypage.Mypage_ProfileEdit_Activity"
+            android:exported="true" >
+
         </activity>
     </application>
-
 </manifest>

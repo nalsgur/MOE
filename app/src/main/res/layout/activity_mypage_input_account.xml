@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mypage.Mypage_Inputaccount_Activity"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/Input_Account_backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_backbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계정 관리"
+        android:textSize="18sp"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintStart_toEndOf="@id/Input_Account_backbtn"
+        app:layout_constraintTop_toTopOf="@id/Input_Account_backbtn"
+        app:layout_constraintBottom_toBottomOf="@id/Input_Account_backbtn"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/input_account_titleidtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Input_Account_backbtn"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="25dp"/>
+
+    <ImageView
+        android:id="@+id/input_account_titleidbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_id"
+        app:layout_constraintTop_toBottomOf="@id/input_account_titleidtv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01012345678"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="@id/input_account_titleidbox"
+        app:layout_constraintBottom_toBottomOf="@id/input_account_titleidbox"
+        app:layout_constraintStart_toStartOf="@id/input_account_titleidbox"
+        android:layout_marginLeft="15dp" />
+
+    <TextView
+        android:id="@+id/input_account_titlepwtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="현재 비밀번호"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/input_account_titleidtv"
+        app:layout_constraintTop_toBottomOf="@id/input_account_titleidbox"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/input_account_pwboxiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_box"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_account_titlepwtv"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/input_account_pwet"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="@id/input_account_pwboxiv"
+        app:layout_constraintTop_toTopOf="@id/input_account_pwboxiv"
+        app:layout_constraintBottom_toBottomOf="@id/input_account_pwboxiv"
+        android:layout_marginLeft="10dp"
+        android:inputType="textPassword"
+        android:background="@null"
+        android:textSize="14sp"
+        android:hint="현재 비밀번호를 입력해주세요." />
+
+    <TextView
+        android:id="@+id/input_account_please"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 8자리를 입력해주세요."
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_account_pwboxiv"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="35dp" />
+
+    <ImageView
+        android:id="@+id/input_account_nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/input_account_nextbtn"
+        app:layout_constraintTop_toBottomOf="@id/input_account_please"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

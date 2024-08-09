@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mypage_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".mypage.MypageFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="345dp"
+                android:background="@color/white_200"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/mypage_backbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_backbtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내 정보"
+                app:layout_constraintStart_toEndOf="@id/mypage_backbtn"
+                app:layout_constraintTop_toTopOf="@id/mypage_backbtn"
+                app:layout_constraintBottom_toBottomOf="@id/mypage_backbtn"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/freesentation_6semibold"/>
+
+
+            <ImageView
+                android:id="@+id/mypage_iconiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="152dp" />
+
+            <ImageView
+                android:id="@+id/mypage_mainbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_mainbox"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mypage_iconiv"
+                android:layout_marginTop="90dp"
+                android:paddingBottom="63dp"/>
+
+            <TextView
+                android:id="@+id/mypage_nametv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="김하나"
+                android:fontFamily="@font/freesentation_6semibold"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mypage_iconiv"
+                android:layout_marginTop="5dp" />
+
+
+            <ImageView
+                android:id="@+id/mypage_profileedittv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_editprofilebtn"
+                app:layout_constraintStart_toStartOf="@id/mypage_mainbox"
+                app:layout_constraintTop_toBottomOf="@id/mypage_nametv"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="71dp"/>
+
+            <ImageView
+                android:id="@+id/mypage_accounttv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_accountbtn"
+                app:layout_constraintStart_toEndOf="@id/mypage_profileedittv"
+                app:layout_constraintTop_toTopOf="@id/mypage_profileedittv"
+                android:layout_marginLeft="56dp"/>
+
+            <TextView
+                android:id="@+id/mypage_QnAtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QnA, 앱 소개"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/freesentation_6semibold"
+                app:layout_constraintTop_toBottomOf="@id/mypage_profileedittv"
+                app:layout_constraintStart_toStartOf="@id/mypage_mainbox"
+                android:layout_marginTop="62dp"
+                android:layout_marginLeft="24dp"/>
+
+            <TextView
+                android:id="@+id/mypage_questiontv"
+                android:layout_width="243dp"
+                android:layout_height="wrap_content"
+                android:text="자주 묻는 질문"
+                android:textSize="15sp"
+                android:textColor="@color/grey_600"
+                app:layout_constraintStart_toStartOf="@id/mypage_QnAtv"
+                app:layout_constraintTop_toBottomOf="@id/mypage_QnAtv"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/mypage_questioniv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_nextbtn"
+                app:layout_constraintTop_toTopOf="@id/mypage_questiontv"
+                app:layout_constraintBottom_toBottomOf="@id/mypage_questiontv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="65dp" />
+
+            <TextView
+                android:id="@+id/mypage_app_introducetv"
+                android:layout_width="243dp"
+                android:layout_height="wrap_content"
+                android:text="앱 소개글"
+                android:textColor="@color/grey_600"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/mypage_questiontv"
+                app:layout_constraintStart_toStartOf="@id/mypage_questiontv"
+                android:layout_marginTop="15dp" />
+
+            <ImageView
+                android:id="@+id/mypage_app_introduceiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_nextbtn"
+                app:layout_constraintTop_toTopOf="@id/mypage_app_introducetv"
+                app:layout_constraintBottom_toBottomOf="@id/mypage_app_introducetv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="65dp" />
+
+            <TextView
+                android:id="@+id/mypage_title2tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="개인정보 및 약관 동의 글 안내"
+                android:textSize="16sp"
+                android:fontFamily="@font/freesentation_6semibold"
+                app:layout_constraintStart_toStartOf="@id/mypage_app_introducetv"
+                app:layout_constraintTop_toBottomOf="@id/mypage_app_introducetv"
+                android:layout_marginTop="40dp" />
+
+            <TextView
+                android:id="@+id/mypage_usetv"
+                android:layout_width="243dp"
+                android:layout_height="wrap_content"
+                android:text="이용약관 보기"
+                android:textSize="15sp"
+                android:textColor="@color/grey_600"
+                app:layout_constraintTop_toBottomOf="@id/mypage_title2tv"
+                app:layout_constraintStart_toStartOf="@id/mypage_title2tv"
+                android:layout_marginTop="15dp" />
+
+            <ImageView
+                android:id="@+id/mypage_useiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_nextbtn"
+                app:layout_constraintTop_toTopOf="@id/mypage_usetv"
+                app:layout_constraintBottom_toBottomOf="@id/mypage_usetv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="65dp" />
+
+            <TextView
+                android:id="@+id/mypage_privacytv"
+                android:layout_width="243dp"
+                android:layout_height="wrap_content"
+                android:text="개인정보 처리방침"
+                android:textColor="@color/grey_600"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/mypage_usetv"
+                app:layout_constraintStart_toStartOf="@id/mypage_usetv"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/mypage_privacyiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_nextbtn"
+                app:layout_constraintTop_toTopOf="@id/mypage_privacytv"
+                app:layout_constraintBottom_toBottomOf="@id/mypage_privacytv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="65dp" />
+
+            <TextView
+                android:id="@+id/mypage_marketingtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="마케팅 목적의 개인정보 수집 및 이용 동의"
+                android:textColor="@color/grey_600"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/mypage_privacytv"
+                app:layout_constraintTop_toBottomOf="@id/mypage_privacytv"
+                android:layout_marginTop="15dp" />
+
+            <ImageView
+                android:id="@+id/mypage_marketingiv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mypage_nextbtn"
+                app:layout_constraintTop_toTopOf="@id/mypage_marketingtv"
+                app:layout_constraintBottom_toBottomOf="@id/mypage_marketingtv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="65dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

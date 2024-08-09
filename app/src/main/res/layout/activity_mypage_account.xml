@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".mypage.Mypage_Account_Activity">
+
+    <ImageView
+        android:id="@+id/mypage_account_backbtniv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_backbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="게정 관리"
+        android:fontFamily="@font/freesentation_6semibold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="@id/mypage_account_backbtniv"
+        app:layout_constraintBottom_toBottomOf="@id/mypage_account_backbtniv"
+        app:layout_constraintStart_toEndOf="@id/mypage_account_backbtniv"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/mypage_account_titleidtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_backbtniv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="85dp" />
+    <ImageView
+        android:id="@+id/mypage_account_idboxiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_titleidtv"
+        android:layout_marginTop="10dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01012345678"
+        android:textSize="14sp"
+        android:textColor="@color/grey_300"
+        app:layout_constraintTop_toTopOf="@id/mypage_account_idboxiv"
+        app:layout_constraintBottom_toBottomOf="@id/mypage_account_idboxiv"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_idboxiv"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/mypage_account_idtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="현재 비밀번호"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_idboxiv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/mypage_account_pwboxiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_idtv"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="********"
+        android:textSize="14sp"
+        android:textColor="@color/grey_300"
+        app:layout_constraintTop_toTopOf="@id/mypage_account_pwboxiv"
+        app:layout_constraintBottom_toBottomOf="@id/mypage_account_pwboxiv"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_pwboxiv"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/mypage_account_newpw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="신규 비밀번호"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_pwboxiv"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="25dp"/>
+    <ImageView
+        android:id="@+id/mypage_account_newpw_inputboxiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_box"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_newpw"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/mypage_account_newpwet"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toTopOf="@id/mypage_account_newpw_inputboxiv"
+        app:layout_constraintBottom_toBottomOf="@id/mypage_account_newpw_inputboxiv"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_newpw_inputboxiv"
+        android:layout_marginLeft="10dp"
+        android:inputType="textPassword"
+        android:background="@null"
+        android:textSize="14sp"
+        android:hint="신규 비밀번호 입력" />
+
+    <ImageView
+        android:id="@+id/mypage_account_newpw_checkboxiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_box"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_newpw_inputboxiv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/mypage_account_newpw_checket"
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:hint="신규 비밀전호 확인"
+        app:layout_constraintTop_toTopOf="@id/mypage_account_newpw_checkboxiv"
+        app:layout_constraintBottom_toBottomOf="@id/mypage_account_newpw_checkboxiv"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_newpw_checkboxiv"
+        android:inputType="textPassword"
+        android:layout_marginLeft="10dp"
+        android:textSize="14sp"
+        android:background="@null" />
+
+    <TextView
+        android:id="@+id/mypage_account_pwtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 8자리를 입력해주세요."
+        android:textSize="13sp"
+        android:textColor="@color/navy"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_newpw_checkboxiv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="10dp" />
+
+        <ImageView
+        android:id="@+id/mypage_account_changebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_changebox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_newpw_checkboxiv"
+        android:layout_marginTop="75dp" />
+    <ImageView
+        android:id="@+id/mypage_account_secessionbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_account_secessionbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_changebtn"
+        android:layout_marginTop="55dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
