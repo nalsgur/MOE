@@ -18,4 +18,6 @@
     <string name="search_back_btn">search_back_btn</string>
     <string name="search_no_record">최근 검색한 기록이 없습니다.</string>
     <string name="noRecord">검색한 기록이 없습니다.</string>
+    <string name="add_image_btn">사진 추가하기</string>
+    <string name="write_end_btn">글쓰기 완료버튼</string>
 </resources>
