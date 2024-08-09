@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".signup.Signup_Login_Finish_Activity">
+
+    <ImageView
+        android:id="@+id/signup_login_finish_backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_backbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="15dp" />
+
+    <ImageView
+        android:id="@+id/signup_login_finish_png"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_login_finish_png"
+        app:layout_constraintTop_toBottomOf="@id/signup_login_finish_backbtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="260dp" />
+
+    <ImageView
+        android:id="@+id/signup_login_finish_nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_login_finishbtn"
+        app:layout_constraintTop_toBottomOf="@id/signup_login_finish_png"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="154dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

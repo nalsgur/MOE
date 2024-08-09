@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">MOE</string>
+
+    <!-- Login -->
+    <string name="kakao_key">946fb56b69f6fc6e54155a504e78ac99</string>
+    <string name="naver_client_id">ocpRiAvKPXHRVoHU8Krb</string>
+    <string name="naver_client_secret">Z2osiStcf2</string>
+    <string name="naver_client_name">Naver Login</string>
+    <string name="facebook_app_id">1222680779169417</string>
+    <string name="fb_login_protocol_scheme">0a13ebd283d4ee0f95c01590b6691c03</string>
+    <string name="facebook_client_token">b0bf61f41e83e772dc17f71314e62b3f</string>
+
+    <!-- Detail -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">검색하기</string>
+    <string name="searchIcon">검색아이콘</string>
+    <string name="search_background">search_background</string>
+    <string name="recently_searched_list">최근 검색한 목록</string>
+    <string name="searched_list_item1">searched_list_item</string>
+    <string name="delete_search_item">delete_search_item</string>
+    <string name="search_like_btn">like_btn</string>
+    <string name="detail_back_btn">backbtn</string>
+    <string name="detail_exhibition_info">전시회 정보</string>
+    <string name="detail_image">detail_image</string>
+    <string name="detail_record_btn">record_btn</string>
+    <string name="detail_record">기록하기!</string>
+    <string name="detail_notice"><![CDATA[[주문 유의사항]\n\n<관람기간>\n- 본 티켓은 1-2주차 (24.03.23 ~ 24.03.31) 간 관람 가능한 티켓입니다.\n\n<티켓 수령>\n- 이 상품은 별도 배송이 되지 않습니다.\n- 현장에서 구매내역 및 본인 확인 후 입장 하실 수 있습니다.\n\n<현장 유의사항>\n- 티켓을 구매하신 경우에도 전시 입장을 위해 대기가 발생할 수 있으며 대기 상황에 따라 입장 제한이 있을 수 있습니다.\n- 자세한 입장 현황은 방문 전 스타트아트코리아 인스타그램(@start.art.seoul)으로 확인 부탁드립니다.\n- 대기 줄은 오전 8시부터 시작되며 오전 9시부터 대기번호를 배부합니다.]]></string>
+    <string name="search_back_btn">search_back_btn</string>
+    <string name="search_no_record">최근 검색한 기록이 없습니다.</string>
+    <string name="noRecord">검색한 기록이 없습니다.</string>
+    <string name="add_image_btn">사진 추가하기</string>
+    <string name="write_end_btn">글쓰기 완료버튼</string>
+
+</resources>

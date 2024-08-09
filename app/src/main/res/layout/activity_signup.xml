@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".signup.Signup_activity">
+
+    <ImageView
+        android:id="@+id/signup_backbtn_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_backbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="25dp" />
+
+    <TextView
+        android:id="@+id/signup_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MOE 서비스 이용약관에\n동의해주세요."
+        android:fontFamily="@font/freesentation_7bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup_backbtn_iv"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="130dp"/>
+
+    <ImageView
+        android:id="@+id/signup_checkboxbtn_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_checkbox_btn"
+        app:layout_constraintTop_toBottomOf="@id/signup_title_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="25dp" />
+
+    <TextView
+        android:id="@+id/signup_checkboxbtn_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="모두동의 (선택 정보 포함)"
+        android:textSize="16sp"
+        android:textColor="@color/grey_300"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintTop_toTopOf="@id/signup_checkboxbtn_iv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_checkboxbtn_iv"
+        app:layout_constraintStart_toEndOf="@id/signup_checkboxbtn_iv"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:id="@+id/signup_line_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_line"
+        app:layout_constraintTop_toBottomOf="@id/signup_checkboxbtn_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="25dp" />
+
+    <ImageView
+        android:id="@+id/signup_usebtn_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_check_btn"
+        app:layout_constraintTop_toBottomOf="@id/signup_line_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/signup_usebtn_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[필수] 이용약관 동의"
+        android:textSize="14sp"
+        android:fontFamily="@font/freesentation_6semibold"
+        android:textColor="@color/grey_300"
+        app:layout_constraintTop_toTopOf="@id/signup_usebtn_iv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_usebtn_iv"
+        app:layout_constraintStart_toEndOf="@id/signup_usebtn_iv"
+        android:layout_marginLeft="5dp"/>
+
+    <ImageView
+        android:id="@+id/signup_usebtnlook_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_lookbtn"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintTop_toTopOf="@id/signup_usebtn_tv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_usebtn_tv"
+        app:layout_constraintStart_toEndOf="@id/signup_usebtn_tv"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
+        android:id="@+id/signup_privacybtn_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_check_btn"
+        app:layout_constraintTop_toBottomOf="@id/signup_usebtn_iv"
+        app:layout_constraintStart_toStartOf="@id/signup_usebtn_iv"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/signup_privacybtn_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[필수] 개인정보 수집 및 이용 동의"
+        android:textColor="@color/grey_300"
+        android:textSize="14sp"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintTop_toTopOf="@id/signup_privacybtn_iv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_privacybtn_iv"
+        app:layout_constraintStart_toEndOf="@id/signup_privacybtn_iv"
+        android:layout_marginLeft="5dp" />
+
+    <ImageView
+        android:id="@+id/signup_privacylook_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_lookbtn"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintTop_toTopOf="@id/signup_privacybtn_tv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_privacybtn_tv"
+        app:layout_constraintStart_toEndOf="@id/signup_privacybtn_tv"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:id="@+id/signup_marketingbtn_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_check_btn"
+        app:layout_constraintTop_toBottomOf="@id/signup_privacybtn_iv"
+        app:layout_constraintStart_toStartOf="@id/signup_privacybtn_iv"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/signup_marketingbtn_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[선택] 마케팅 목적의 개인정보 수집 및 이용 동의"
+        android:textSize="14sp"
+        android:fontFamily="@font/freesentation_6semibold"
+        android:textColor="@color/grey_300"
+        app:layout_constraintTop_toTopOf="@id/signup_marketingbtn_iv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_marketingbtn_iv"
+        app:layout_constraintStart_toEndOf="@id/signup_marketingbtn_iv"
+        android:layout_marginLeft="5dp"/>
+
+    <ImageView
+        android:id="@+id/signup_marketinglook_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_lookbtn"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintTop_toTopOf="@id/signup_marketingbtn_tv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_marketingbtn_tv"
+        app:layout_constraintStart_toEndOf="@id/signup_marketingbtn_tv"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
+        android:id="@+id/signup_adbtn_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_check_btn"
+        app:layout_constraintTop_toBottomOf="@id/signup_marketingbtn_iv"
+        app:layout_constraintStart_toStartOf="@id/signup_marketingbtn_iv"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/signup_adbtn_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[선택] 광고성 정보 수신 동의"
+        android:textColor="@color/grey_300"
+        android:textSize="14sp"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintTop_toTopOf="@id/signup_adbtn_iv"
+        app:layout_constraintBottom_toBottomOf="@id/signup_adbtn_iv"
+        app:layout_constraintStart_toEndOf="@id/signup_adbtn_iv"
+        android:layout_marginLeft="5dp" />
+
+    <ImageView
+        android:id="@+id/signup_nextbtn_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/signup_nextbtn"
+        app:layout_constraintTop_toBottomOf="@id/signup_adbtn_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
