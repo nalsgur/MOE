@@ -35,9 +35,8 @@
                 android:text="앱 소개글"
                 android:textSize="20sp"
                 android:fontFamily="@font/freesentation_6semibold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/mypage_introduce_pic"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="50dp"
                 android:layout_marginTop="50dp"/>
 
             <ImageView
