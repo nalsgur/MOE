@@ -26,6 +26,7 @@ class FollowFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFollowBinding.inflate(inflater,container,false)
 
+
         val recyclerview = binding.followRv
 
         val itemlist = ArrayList<FollowItem>()
@@ -151,9 +152,9 @@ class FollowRecyclerAdapter (
         holder.binding.followItemHeart.setOnClickListener {
             isheart = !isheart
             if(isheart) {
-                holder.binding.followItemHeart.setImageResource(R.drawable.follow_heart_after)
-            } else {
                 holder.binding.followItemHeart.setImageResource(R.drawable.follow_heart)
+            } else {
+                holder.binding.followItemHeart.setImageResource(R.drawable.follow_heart_after)
             }
         }
     }
