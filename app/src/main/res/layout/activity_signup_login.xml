@@ -18,121 +18,133 @@
         android:layout_marginTop="15dp"
         android:layout_marginLeft="25dp"/>
 
-    <TextView
-        android:id="@+id/signup_login_title"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signup_container"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="로그인에 사용할\n아이디, 비밀번호를 입력해주세요."
-        android:fontFamily="@font/freesentation_7bold"
-        android:textSize="20sp"
-        android:textColor="@color/black"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintTop_toBottomOf="@id/signup_login_backbtn"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="130dp" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <ImageView
-        android:id="@+id/signup_login_idbox_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/signup_login_id"
-        app:layout_constraintTop_toBottomOf="@id/signup_login_title"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="25dp" />
-    
-    <EditText
-        android:id="@+id/signup_login_idet"
-        android:layout_width="242dp"
-        android:layout_height="30dp"
-        app:layout_constraintTop_toTopOf="@id/signup_login_idbox_iv"
-        app:layout_constraintBottom_toBottomOf="@id/signup_login_idbox_iv"
-        app:layout_constraintStart_toStartOf="@id/signup_login_idbox_iv"
-        android:layout_marginLeft="15dp"
-        android:fontFamily="@font/freesentation_6semibold"
-        android:hint="아이디 (전화번호) 입력"
-        android:textSize="14sp"
-        android:background="@null"/>
-    <ImageView
-        android:id="@+id/signup_login_idcheckbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/signup_login_idcheckbtn"
-        app:layout_constraintStart_toEndOf="@id/signup_login_idbox_iv"
-        app:layout_constraintTop_toTopOf="@id/signup_login_idbox_iv"
-        app:layout_constraintBottom_toBottomOf="@id/signup_login_idbox_iv"
-        android:layout_marginLeft="5dp" />
-    <TextView
-        android:id="@+id/signup_login_idtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="중복확인을 눌러주세요"
-        android:textSize="14sp"
-        android:fontFamily="@font/freesentation_6semibold"
-        app:layout_constraintTop_toBottomOf="@id/signup_login_idbox_iv"
-        app:layout_constraintStart_toStartOf="@id/signup_login_idbox_iv"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/navy"/>
+        <TextView
+            android:id="@+id/signup_login_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그인에 사용할\n아이디, 비밀번호를 입력해주세요."
+            android:fontFamily="@font/freesentation_7bold"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/signup_login_pwbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/signup_login_pw"
-        app:layout_constraintTop_toBottomOf="@id/signup_login_idbox_iv"
-        app:layout_constraintStart_toStartOf="@id/signup_login_idbox_iv"
-        android:layout_marginTop="50dp" />
+        <ImageView
+            android:id="@+id/signup_login_idbox_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup_login_id"
+            app:layout_constraintTop_toBottomOf="@id/signup_login_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="60dp" />
 
-    <EditText
-        android:id="@+id/signup_login_pwet"
-        android:layout_width="242dp"
-        android:layout_height="30dp"
-        android:hint="비밀번호 입력"
-        android:fontFamily="@font/freesentation_6semibold"
-        app:layout_constraintTop_toTopOf="@id/signup_login_pwbox"
-        app:layout_constraintBottom_toBottomOf="@id/signup_login_pwbox"
-        app:layout_constraintStart_toStartOf="@id/signup_login_pwbox"
-        android:layout_marginLeft="15dp"
-        android:background="@null"
-        android:inputType="textPassword"
-        android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/signup_login_idet"
+            android:layout_width="242dp"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toTopOf="@id/signup_login_idbox_iv"
+            app:layout_constraintBottom_toBottomOf="@id/signup_login_idbox_iv"
+            app:layout_constraintStart_toStartOf="@id/signup_login_idbox_iv"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/freesentation_6semibold"
+            android:hint="아이디 (전화번호) 입력"
+            android:textSize="14sp"
+            android:background="@null"/>
+        <ImageView
+            android:id="@+id/signup_login_idcheckbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup_login_idcheckbtn"
+            app:layout_constraintStart_toEndOf="@id/signup_login_idbox_iv"
+            app:layout_constraintTop_toTopOf="@id/signup_login_idbox_iv"
+            app:layout_constraintBottom_toBottomOf="@id/signup_login_idbox_iv"
+            android:layout_marginLeft="5dp" />
+        <TextView
+            android:id="@+id/signup_login_idtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="중복확인을 눌러주세요"
+            android:textSize="14sp"
+            android:fontFamily="@font/freesentation_6semibold"
+            app:layout_constraintTop_toBottomOf="@id/signup_login_idbox_iv"
+            app:layout_constraintStart_toStartOf="@id/signup_login_idbox_iv"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/navy"/>
 
-    <ImageView
-        android:id="@+id/signup_login_pwcheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/signup_login_pw"
-        app:layout_constraintTop_toBottomOf="@id/signup_login_pwbox"
-        app:layout_constraintStart_toStartOf="@id/signup_login_pwbox"
-        android:layout_marginTop="10dp"/>
+        <ImageView
+            android:id="@+id/signup_login_pwbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup_login_pw"
+            app:layout_constraintTop_toBottomOf="@id/signup_login_idbox_iv"
+            app:layout_constraintStart_toStartOf="@id/signup_login_idbox_iv"
+            android:layout_marginTop="50dp" />
 
-    <EditText
-        android:id="@+id/signup_login_pwchecket"
-        android:layout_width="242dp"
-        android:layout_height="30dp"
-        android:hint="비밀번호 확인"
-        android:fontFamily="@font/freesentation_6semibold"
-        app:layout_constraintTop_toTopOf="@id/signup_login_pwcheckbox"
-        app:layout_constraintBottom_toBottomOf="@id/signup_login_pwcheckbox"
-        app:layout_constraintStart_toStartOf="@id/signup_login_pwcheckbox"
-        android:layout_marginLeft="15dp"
-        android:background="@null"
-        android:inputType="textPassword"
-        android:textSize="14sp"/>
+        <EditText
+            android:id="@+id/signup_login_pwet"
+            android:layout_width="242dp"
+            android:layout_height="30dp"
+            android:hint="비밀번호 입력"
+            android:fontFamily="@font/freesentation_6semibold"
+            app:layout_constraintTop_toTopOf="@id/signup_login_pwbox"
+            app:layout_constraintBottom_toBottomOf="@id/signup_login_pwbox"
+            app:layout_constraintStart_toStartOf="@id/signup_login_pwbox"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:inputType="textPassword"
+            android:textSize="14sp"/>
 
-    <TextView
-        android:id="@+id/signup_login_pwtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="비밀번호 8자리를 입력해주세요."
-        android:textSize="14sp"
-        android:fontFamily="@font/freesentation_6semibold"
-        app:layout_constraintTop_toBottomOf="@id/signup_login_pwcheckbox"
-        app:layout_constraintStart_toStartOf="@id/signup_login_pwcheckbox"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/navy"/>
+        <ImageView
+            android:id="@+id/signup_login_pwcheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/signup_login_pw"
+            app:layout_constraintTop_toBottomOf="@id/signup_login_pwbox"
+            app:layout_constraintStart_toStartOf="@id/signup_login_pwbox"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/signup_login_pwchecket"
+            android:layout_width="242dp"
+            android:layout_height="30dp"
+            android:hint="비밀번호 확인"
+            android:fontFamily="@font/freesentation_6semibold"
+            app:layout_constraintTop_toTopOf="@id/signup_login_pwcheckbox"
+            app:layout_constraintBottom_toBottomOf="@id/signup_login_pwcheckbox"
+            app:layout_constraintStart_toStartOf="@id/signup_login_pwcheckbox"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:inputType="textPassword"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/signup_login_pwtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 8자리를 입력해주세요."
+            android:textSize="14sp"
+            android:fontFamily="@font/freesentation_6semibold"
+            app:layout_constraintTop_toBottomOf="@id/signup_login_pwcheckbox"
+            app:layout_constraintStart_toStartOf="@id/signup_login_pwcheckbox"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/navy"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <ImageView
         android:id="@+id/signup_login_nextbtn"
@@ -141,7 +153,7 @@
         android:src="@drawable/signup_nextbtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signup_login_pwcheckbox"
-        android:layout_marginTop="100dp" />
+        app:layout_constraintTop_toBottomOf="@id/signup_container"
+        android:layout_marginTop="80dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

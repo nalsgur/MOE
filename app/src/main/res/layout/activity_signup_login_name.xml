@@ -45,6 +45,7 @@
         android:layout_width="270dp"
         android:layout_height="20dp"
         android:hint="닉네임 입력"
+        android:textSize="14sp"
         android:background="@null"
         android:fontFamily="@font/freesentation_6semibold"
         app:layout_constraintTop_toTopOf="@id/signup_login_name_namebox"
