@@ -77,6 +77,7 @@ class FindActivity : AppCompatActivity() {
         }
 
         binding.findLeftArrow.setOnClickListener {
+            isCertifyBtnClicked = true
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
