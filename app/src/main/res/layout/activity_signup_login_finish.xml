@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="15dp" />
 
     <ImageView
         android:id="@+id/signup_login_finish_png"

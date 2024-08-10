@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="제목"
         android:textSize="13sp"
-        android:fontFamily="@font/freesentation_6semibold"
+        android:fontFamily="@font/freesentation_7bold"
         app:layout_constraintTop_toBottomOf="@id/follow_item_image"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="5.5dp"/>
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/follow_item_image"
         android:layout_marginTop="9.5dp"
-        android:layout_marginRight="6dp"/>
+        android:layout_marginRight="5dp"/>
 
     <TextView
         android:id="@+id/follow_item_date"
@@ -40,6 +40,8 @@
         android:layout_height="wrap_content"
         android:text="날짜"
         android:textSize="10sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/freesentation_3light"
         app:layout_constraintTop_toBottomOf="@id/follow_item_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

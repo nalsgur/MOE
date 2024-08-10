@@ -34,10 +34,9 @@
                 android:layout_height="wrap_content"
                 android:text="자주 묻는 질문"
                 android:textSize="20sp"
-                android:fontFamily="@font/freesentation_6semibold"
-                app:layout_constraintStart_toStartOf="parent"
+                android:fontFamily="@font/freesentation_7bold"
+                app:layout_constraintStart_toStartOf="@id/mypage_qna_pic"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="25dp"
                 android:layout_marginTop="50dp"/>
 
             <ImageView

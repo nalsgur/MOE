@@ -34,10 +34,9 @@
                 android:layout_height="wrap_content"
                 android:text="개인정보 처리방침"
                 android:textSize="20sp"
-                android:fontFamily="@font/freesentation_6semibold"
-                app:layout_constraintStart_toStartOf="parent"
+                android:fontFamily="@font/freesentation_7bold"
+                app:layout_constraintStart_toStartOf="@id/mypage_privacy_pic"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="25dp"
                 android:layout_marginTop="50dp"/>
 
             <ImageView

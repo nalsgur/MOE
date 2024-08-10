@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/map_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        
+        <ImageView
+            android:id="@+id/map_left_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/main_left_arrow"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지역 선택"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/freesentation_8extrabold"
+            android:layout_marginStart="10dp"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/home_search"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/main_search"/>
+
+        <ImageView
+            android:id="@+id/home_user"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/main_user"/>
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/map_scroll_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/map_head"
+        app:layout_constraintBottom_toTopOf="@id/map_scroll_body">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/map_btn_seoul_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="서울"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_geo_btn_shape"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/map_btn_busan_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="부산"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_geo_btn_shape"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"/>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/map_head_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="원하시는 지역을 선택해 주세요!"
+        android:textSize="16dp"
+        android:fontFamily="@font/freesentation_7bold"
+        android:layout_marginTop="75dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/map_scroll_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/main_map_layout_shape"
+        android:layout_marginTop="120dp"
+        android:paddingTop="2.5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:weightSum="3">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="2"
+            android:paddingEnd="2.5dp"
+            android:background="@drawable/main_map_sub_layout_shape"
+            android:gravity="center_horizontal">
+
+            <android.widget.Button
+                android:id="@+id/map_geo_btn_1"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:text="서울"
+                android:textSize="14dp"
+                android:fontFamily="@font/freesentation_6semibold"
+                android:background="@drawable/main_map_btn_shape"/>
+
+            <android.widget.Button
+                android:id="@+id/map_geo_btn_2"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:text="부산"
+                android:textSize="14dp"
+                android:fontFamily="@font/freesentation_6semibold"
+                android:background="@drawable/main_map_btn_shape"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/main_btn_body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ScrollView
+                android:id="@+id/scroll_seoul"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="강남구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="강동구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn1"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn3"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="강북구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn2"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn4"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="강서구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn3"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn5"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="관악구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn4"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn6"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="광진구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn5"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn7"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="구로구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn6"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn8"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="금천구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn7"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn9"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="노원구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn8"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn10"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        android:text="도봉구"
+                        android:textSize="14dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn9" />
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn11"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="동대문구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn10"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn12"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        android:text="동작구"
+                        android:textSize="14dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn11" />
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn13"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="마포구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn12"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn14"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="서대문구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn13"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn15"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="서초구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn14"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn16"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="성동구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn15"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn17"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="성북구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn16"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn18"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="송파구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn17"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn19"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="양천구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn18"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn20"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="영등포구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn19"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn21"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="용산구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn20"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn22"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="은평구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn21"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn23"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="종로구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn22"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn24"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="중구"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn23"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <android.widget.Button
+                        android:id="@+id/map_sub_geo_btn25"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:text="중랑"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/freesentation_6semibold"
+                        android:background="@drawable/main_map_sub_btn_shape"
+                        android:gravity="center_vertical"
+                        android:paddingStart="20dp"
+                        app:layout_constraintTop_toBottomOf="@id/map_sub_geo_btn24"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+            <ScrollView
+                android:id="@+id/scroll_busan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="강서구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="금정구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn1"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="남구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn2"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="동구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn3"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn5"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="동래구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn4"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn6"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="진구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn5"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn7"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="북구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn6"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn8"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="사상구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn7"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn9"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="사하구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn8"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn10"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="서구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn9"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn11"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="수영구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn10"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn12"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="연제구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn11"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn13"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="영도구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn12"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn14"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="중구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn13"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <android.widget.Button
+                    android:id="@+id/map_sub2_geo_btn15"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="해운구"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/freesentation_6semibold"
+                    android:background="@drawable/main_map_sub_btn_shape"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/map_sub2_geo_btn14"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/map_check_btn"
+        android:layout_width="311dp"
+        android:layout_height="44dp"
+        android:text="확인"
+        android:textSize="15dp"
+        android:textColor="@color/grey_300"
+        android:fontFamily="@font/freesentation_7bold"
+        android:enabled="false"
+        android:background="@drawable/main_map_check_btn_default"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/loading_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4D000000"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ProgressBar
+            android:id="@+id/map_loading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:progressBackgroundTint="@color/lightNavy"
+            android:progressTint="@color/navy"
+            android:progressDrawable="@drawable/main_map_loading"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/main_moe_logo"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+    
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,26 +8,34 @@
     tools:context=".mypage.Mypage_Inputaccount_Activity"
     android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/Input_Account_backbtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/Input_Account_head"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/mypage_backbtn"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="계정 관리"
-        android:textSize="18sp"
-        android:fontFamily="@font/freesentation_6semibold"
-        app:layout_constraintStart_toEndOf="@id/Input_Account_backbtn"
-        app:layout_constraintTop_toTopOf="@id/Input_Account_backbtn"
-        app:layout_constraintBottom_toBottomOf="@id/Input_Account_backbtn"
-        android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:id="@+id/Input_Account_backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mypage_backbtn"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정 관리"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/freesentation_8extrabold"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/input_account_titleidtv"
@@ -35,10 +43,10 @@
         android:layout_height="wrap_content"
         android:text="아이디"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Input_Account_backbtn"
-        android:layout_marginTop="180dp"
-        android:layout_marginLeft="25dp"/>
+        android:fontFamily="@font/freesentation_8extrabold"
+        app:layout_constraintStart_toStartOf="@id/input_account_titleidbox"
+        app:layout_constraintTop_toBottomOf="@id/Input_Account_head"
+        android:layout_marginTop="165dp"/>
 
     <ImageView
         android:id="@+id/input_account_titleidbox"
@@ -55,6 +63,7 @@
         android:layout_height="wrap_content"
         android:text="01012345678"
         android:textSize="14sp"
+        android:fontFamily="@font/freesentation_6semibold"
         app:layout_constraintTop_toTopOf="@id/input_account_titleidbox"
         app:layout_constraintBottom_toBottomOf="@id/input_account_titleidbox"
         app:layout_constraintStart_toStartOf="@id/input_account_titleidbox"
@@ -66,6 +75,7 @@
         android:layout_height="wrap_content"
         android:text="현재 비밀번호"
         android:textSize="14sp"
+        android:fontFamily="@font/freesentation_8extrabold"
         app:layout_constraintStart_toStartOf="@id/input_account_titleidtv"
         app:layout_constraintTop_toBottomOf="@id/input_account_titleidbox"
         android:layout_marginTop="20dp" />
@@ -99,10 +109,11 @@
         android:layout_height="wrap_content"
         android:text="비밀번호 8자리를 입력해주세요."
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/freesentation_6semibold"
+        app:layout_constraintStart_toStartOf="@id/input_account_pwboxiv"
         app:layout_constraintTop_toBottomOf="@id/input_account_pwboxiv"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="35dp" />
+        android:layout_marginLeft="10dp" />
 
     <ImageView
         android:id="@+id/input_account_nextbtn"

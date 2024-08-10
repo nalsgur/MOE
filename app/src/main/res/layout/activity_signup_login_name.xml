@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/signup_login_name_title"
@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         android:text="닉네임을 입력해주세요."
         android:textSize="20sp"
-        android:fontFamily="@font/freesentation_6semibold"
+        android:fontFamily="@font/freesentation_7bold"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/signup_login_name_backbtn"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="145dp"
-        android:layout_marginLeft="25dp" />
+        app:layout_constraintStart_toStartOf="@id/signup_login_name_namebox"
+        android:layout_marginTop="145dp"/>
 
     <ImageView
         android:id="@+id/signup_login_name_namebox"
@@ -46,6 +46,7 @@
         android:layout_height="20dp"
         android:hint="닉네임 입력"
         android:background="@null"
+        android:fontFamily="@font/freesentation_6semibold"
         app:layout_constraintTop_toTopOf="@id/signup_login_name_namebox"
         app:layout_constraintBottom_toBottomOf="@id/signup_login_name_namebox"
         app:layout_constraintStart_toStartOf="@id/signup_login_name_namebox"

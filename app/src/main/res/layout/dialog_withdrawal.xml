@@ -52,18 +52,20 @@
             android:layout_weight="1"
             android:background="@drawable/view_round_nobtn_background"
             android:text="아니요"
+            android:fontFamily="@font/freesentation_6semibold"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/dialog_yesbtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="네"
+            android:fontFamily="@font/freesentation_6semibold"
             android:background="@drawable/view_round_yesbtn_background"
             android:layout_weight="1"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:gravity="center"
             android:textColor="@color/black" />
     </LinearLayout>

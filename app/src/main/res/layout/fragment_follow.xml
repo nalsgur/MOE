@@ -5,57 +5,68 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".follow.FollowFragment">
+    tools:context=".main.FollowFragment">
 
-    <ImageView
-        android:id="@+id/follow_backbtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/follow_head"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/mypage_backbtn"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="25dp"/>
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="팔로우"
-        android:textSize="18dp"
-        android:fontFamily="@font/freesentation_6semibold"
-        app:layout_constraintTop_toTopOf="@id/follow_backbtn"
-        app:layout_constraintBottom_toBottomOf="@id/follow_backbtn"
-        app:layout_constraintStart_toEndOf="@id/follow_backbtn"
-        android:layout_marginLeft="10dp" />
+        <ImageView
+            android:id="@+id/follow_backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mypage_backbtn"/>
 
-    <ImageView
-        android:id="@+id/follow_homebtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/mypage_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/follow_backbtn"
-        android:layout_marginRight="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="팔로우"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/freesentation_8extrabold"
+            android:layout_marginLeft="10dp" />
 
-    <ImageView
-        android:id="@+id/follow_searchbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/follow_searchbtn"
-        app:layout_constraintTop_toTopOf="@id/follow_homebtn"
-        app:layout_constraintBottom_toBottomOf="@id/follow_homebtn"
-        app:layout_constraintEnd_toStartOf="@id/follow_homebtn"
-        android:layout_marginRight="10dp" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/follow_searchbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/follow_searchbtn"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:id="@+id/follow_homebtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/mypage_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/follow_backbtn"/>
+
+    </LinearLayout>
+
 
     <ImageView
         android:id="@+id/follow_btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/follow_btn1"
-        app:layout_constraintTop_toBottomOf="@id/follow_backbtn"
+        app:layout_constraintTop_toBottomOf="@id/follow_head"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="15dp"/>
 
     <ImageView
         android:id="@+id/follow_btn2"
@@ -78,8 +89,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/follow_rv"
-        android:layout_width="310dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/follow_btn1"

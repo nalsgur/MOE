@@ -8,26 +8,36 @@
     android:background="@color/white"
     tools:context=".mypage.Mypage_Account_Activity">
 
-    <ImageView
-        android:id="@+id/mypage_account_backbtniv"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/mypage_account_head"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/mypage_backbtn"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="게정 관리"
-        android:fontFamily="@font/freesentation_6semibold"
-        android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="@id/mypage_account_backbtniv"
-        app:layout_constraintBottom_toBottomOf="@id/mypage_account_backbtniv"
-        app:layout_constraintStart_toEndOf="@id/mypage_account_backbtniv"
-        android:layout_marginLeft="10dp" />
+        <ImageView
+            android:id="@+id/mypage_account_backbtniv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mypage_backbtn"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정 관리"
+            android:fontFamily="@font/freesentation_8extrabold"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/mypage_account_titleidtv"
@@ -35,10 +45,10 @@
         android:layout_height="wrap_content"
         android:text="아이디"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mypage_account_backbtniv"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="85dp" />
+        android:fontFamily="@font/freesentation_8extrabold"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_idboxiv"
+        app:layout_constraintTop_toBottomOf="@id/mypage_account_head"
+        android:layout_marginTop="65dp" />
     <ImageView
         android:id="@+id/mypage_account_idboxiv"
         android:layout_width="wrap_content"
@@ -65,9 +75,9 @@
         android:layout_height="wrap_content"
         android:text="현재 비밀번호"
         android:textSize="14sp"
+        android:fontFamily="@font/freesentation_8extrabold"
         app:layout_constraintTop_toBottomOf="@id/mypage_account_idboxiv"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="25dp"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_pwboxiv"
         android:layout_marginTop="20dp" />
 
     <ImageView
@@ -97,10 +107,10 @@
         android:layout_height="wrap_content"
         android:text="신규 비밀번호"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/freesentation_8extrabold"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_newpw_inputboxiv"
         app:layout_constraintTop_toBottomOf="@id/mypage_account_pwboxiv"
-        android:layout_marginTop="55dp"
-        android:layout_marginLeft="25dp"/>
+        android:layout_marginTop="55dp"/>
     <ImageView
         android:id="@+id/mypage_account_newpw_inputboxiv"
         android:layout_width="wrap_content"
@@ -121,6 +131,7 @@
         android:inputType="textPassword"
         android:background="@null"
         android:textSize="14sp"
+        android:fontFamily="@font/freesentation_6semibold"
         android:hint="신규 비밀번호 입력" />
 
     <ImageView
@@ -144,6 +155,7 @@
         android:inputType="textPassword"
         android:layout_marginLeft="10dp"
         android:textSize="14sp"
+        android:fontFamily="@font/freesentation_6semibold"
         android:background="@null" />
 
     <TextView
@@ -153,9 +165,10 @@
         android:text="비밀번호 8자리를 입력해주세요."
         android:textSize="13sp"
         android:textColor="@color/navy"
+        android:fontFamily="@font/freesentation_6semibold"
         app:layout_constraintTop_toBottomOf="@id/mypage_account_newpw_checkboxiv"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="35dp"
+        app:layout_constraintStart_toStartOf="@id/mypage_account_newpw_checket"
+        android:paddingLeft="10dp"
         android:layout_marginTop="10dp" />
 
         <ImageView
