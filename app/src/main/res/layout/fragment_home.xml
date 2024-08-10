@@ -8,201 +8,238 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <LinearLayout
-        android:id="@+id/home_head"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="25dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/home_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="25dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/home_logo"
+                android:layout_width="84dp"
+                android:layout_height="33.9dp"
+                android:src="@drawable/main_moe_logo"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:id="@+id/home_search"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/main_search"/>
+
+            <ImageView
+                android:id="@+id/home_user"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/main_user"/>
+
+
+        </LinearLayout>
+
+        <android.widget.Button
+            android:id="@+id/home_show_btn"
+            android:layout_width="56dp"
+            android:layout_height="27dp"
+            android:background="@drawable/main_home_btn_shape"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:text="전시회"
+            android:textSize="14dp"
+            android:fontFamily="@font/freesentation_6semibold"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            app:layout_constraintTop_toBottomOf="@id/home_head"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <android.widget.Button
+            android:id="@+id/home_store_btn"
+            android:layout_width="83dp"
+            android:layout_height="27dp"
+            android:background="@drawable/main_home_btn_shape"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            android:text="팝업 스토어"
+            android:textSize="14dp"
+            android:fontFamily="@font/freesentation_6semibold"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toTopOf="@id/home_show_btn"
+            app:layout_constraintStart_toEndOf="@id/home_show_btn"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/home_show_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/home_sub_tl_show1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="최근 전시"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/freesentation_8extrabold"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_rc_show1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/home_sub_tl_show1"
+                    tools:layout_editor_absoluteX="-20dp"
+                    tools:listitem="@layout/item_show"/>
+
+                <TextView
+                    android:id="@+id/home_sub_tl_show2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="인기 전시"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/freesentation_8extrabold"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintTop_toBottomOf="@id/home_rc_show1"
+                    app:layout_constraintStart_toStartOf="@id/home_sub_tl_show1"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_rc_show2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/home_sub_tl_show2"
+                    tools:layout_editor_absoluteX="-20dp"
+                    tools:listitem="@layout/item_show"/>
+
+                <Space
+                    android:id="@+id/sub_space"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    app:layout_constraintTop_toBottomOf="@id/home_rc_show2"
+                    app:layout_constraintBottom_toTopOf="@id/home_sub_tl_pop_up1"/>
+
+                <TextView
+                    android:id="@+id/home_sub_tl_pop_up1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="최근 팝업 스토어"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/freesentation_8extrabold"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintTop_toBottomOf="@id/sub_space"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_rc_pop_up1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/home_sub_tl_pop_up1"
+                    tools:layout_editor_absoluteX="-20dp"
+                    tools:listitem="@layout/item_show"/>
+
+                <TextView
+                    android:id="@+id/home_sub_tl_pop_up2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="인기 팝업 스토어"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/freesentation_8extrabold"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintTop_toBottomOf="@id/home_rc_pop_up1"
+                    app:layout_constraintStart_toStartOf="@id/home_sub_tl_pop_up1"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_rc_pop_up2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/home_sub_tl_pop_up2"
+                    tools:layout_editor_absoluteX="-20dp"
+                    tools:listitem="@layout/item_show"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/home_loading_ct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ImageView
-            android:id="@+id/home_logo"
-            android:layout_width="84dp"
-            android:layout_height="33.9dp"
-            android:src="@drawable/main_moe_logo"/>
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+        <ProgressBar
+            android:id="@+id/home_loading"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:progressBackgroundTint="@color/lightNavy"
+            android:progressTint="@color/navy"
+            android:progressDrawable="@drawable/main_map_loading"
+            android:layout_gravity="center"/>
 
         <ImageView
-            android:id="@+id/home_search"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/main_search"/>
-
-        <ImageView
-            android:id="@+id/home_user"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/main_user"/>
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/main_moe_logo"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 
 
-    </LinearLayout>
 
-    <android.widget.Button
-        android:id="@+id/home_show_btn"
-        android:layout_width="56dp"
-        android:layout_height="27dp"
-        android:background="@drawable/main_home_btn_shape"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingStart="3dp"
-        android:paddingEnd="3dp"
-        android:text="전시회"
-        android:textSize="14dp"
-        android:fontFamily="@font/freesentation_6semibold"
-        android:gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="25dp"
-        app:layout_constraintTop_toBottomOf="@id/home_head"
-        app:layout_constraintStart_toStartOf="parent"/>
 
-    <android.widget.Button
-        android:id="@+id/home_store_btn"
-        android:layout_width="83dp"
-        android:layout_height="27dp"
-        android:background="@drawable/main_home_btn_shape"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingStart="3dp"
-        android:paddingEnd="3dp"
-        android:text="팝업 스토어"
-        android:textSize="14dp"
-        android:fontFamily="@font/freesentation_6semibold"
-        android:gravity="center"
-        android:layout_marginStart="10dp"
-        app:layout_constraintTop_toTopOf="@id/home_show_btn"
-        app:layout_constraintStart_toEndOf="@id/home_show_btn"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:paddingTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/home_show_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/home_sub_tl_show1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="최근 전시"
-                android:textSize="18dp"
-                android:fontFamily="@font/freesentation_8extrabold"
-                android:layout_marginStart="25dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_rc_show1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/home_sub_tl_show1"
-                tools:layout_editor_absoluteX="-20dp"
-                tools:listitem="@layout/item_show"/>
-
-            <TextView
-                android:id="@+id/home_sub_tl_show2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="인기 전시"
-                android:textSize="18dp"
-                android:fontFamily="@font/freesentation_8extrabold"
-                android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@id/home_rc_show1"
-                app:layout_constraintStart_toStartOf="@id/home_sub_tl_show1"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_rc_show2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/home_sub_tl_show2"
-                tools:layout_editor_absoluteX="-20dp"
-                tools:listitem="@layout/item_show"/>
-            
-            <Space
-                android:id="@+id/sub_space"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                app:layout_constraintTop_toBottomOf="@id/home_rc_show2"
-                app:layout_constraintBottom_toTopOf="@id/home_sub_tl_pop_up1"/>
-
-            <TextView
-                android:id="@+id/home_sub_tl_pop_up1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="최근 팝업 스토어"
-                android:textSize="18dp"
-                android:fontFamily="@font/freesentation_8extrabold"
-                android:layout_marginStart="25dp"
-                app:layout_constraintTop_toBottomOf="@id/sub_space"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_rc_pop_up1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/home_sub_tl_pop_up1"
-                tools:layout_editor_absoluteX="-20dp"
-                tools:listitem="@layout/item_show"/>
-
-            <TextView
-                android:id="@+id/home_sub_tl_pop_up2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="인기 팝업 스토어"
-                android:textSize="18dp"
-                android:fontFamily="@font/freesentation_8extrabold"
-                android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@id/home_rc_pop_up1"
-                app:layout_constraintStart_toStartOf="@id/home_sub_tl_pop_up1"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_rc_pop_up2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@id/home_sub_tl_pop_up2"
-                tools:layout_editor_absoluteX="-20dp"
-                tools:listitem="@layout/item_show"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
