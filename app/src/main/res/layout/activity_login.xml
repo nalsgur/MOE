@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toEndOf="@id/password"/>
 
 
-    <Button
+    <android.widget.Button
         android:id="@+id/login_button"
         android:layout_width="310dp"
         android:layout_height="48dp"

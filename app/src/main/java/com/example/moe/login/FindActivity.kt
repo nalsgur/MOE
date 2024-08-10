@@ -88,21 +88,26 @@ class FindActivity : AppCompatActivity() {
         val idText = binding.findId.text.toString()
         val idCheckText = binding.findIdCheck.text.toString()
 
-        if (idText.isNotEmpty() && idText == idCheckText) {
-            binding.findCheckBtn.background = ResourcesCompat.getDrawable(resources,
-                R.drawable.login_find_check_click, null)
-            binding.findCheckBtn.setTextColor(Color.WHITE)
-            binding.findCheckBtn.isEnabled = true
-            binding.findCheckTx.text = "아이디가 일치합니다"
-            binding.findCheckTx.setTextColor(ContextCompat.getColor(this, R.color.navy))
+        if (idText.length == 11) {
+            if (idText.isNotEmpty() && idText == idCheckText) {
+                binding.findCheckBtn.background = ResourcesCompat.getDrawable(resources,
+                    R.drawable.login_find_check_click, null)
+                binding.findCheckBtn.setTextColor(Color.WHITE)
+                binding.findCheckBtn.isEnabled = true
+                binding.findCheckTx.text = "아이디가 일치합니다"
+                binding.findCheckTx.setTextColor(ContextCompat.getColor(this, R.color.navy))
+            } else {
+                binding.findCheckBtn.background = ResourcesCompat.getDrawable(resources,
+                    R.drawable.login_find_check_default, null)
+                binding.findCheckBtn.setTextColor(ContextCompat.getColor(this, R.color.grey_300))
+                binding.findCheckBtn.isEnabled = false
+                binding.findCheckTx.text = "아이디가 일치하지 않습니다"
+                binding.findCheckTx.setTextColor(Color.RED)
+            }
         } else {
-            binding.findCheckBtn.background = ResourcesCompat.getDrawable(resources,
-                R.drawable.login_find_check_default, null)
-            binding.findCheckBtn.setTextColor(ContextCompat.getColor(this, R.color.grey_300))
-            binding.findCheckBtn.isEnabled = false
-            binding.findCheckTx.text = "아이디가 일치하지 않습니다"
-            binding.findCheckTx.setTextColor(Color.RED)
+            binding.findCheckTx.text = "존재하지 않는 아이디입니다"
         }
+
     }
 
     private fun setTimer() {

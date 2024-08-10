@@ -3,6 +3,7 @@ package com.example.moe
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +38,7 @@ class HomeFragment : Fragment() {
     private lateinit var popupAdapterTopLiked: PopupTopLikedAdapter
     private lateinit var popupAdapterLatest: PopupLatestAdapter
     private lateinit var sharedViewModel: SharedViewModel
+    private var isLoadingViewRemoved = false
 
     private val apiService by lazy { RetrofitClient.HomeApiService() }
 
@@ -51,6 +53,23 @@ class HomeFragment : Fragment() {
 
         loadData(isTopLiked = true)
         loadData(isTopLiked = false)
+
+        if (savedInstanceState != null) {
+            isLoadingViewRemoved = savedInstanceState.getBoolean("LoadingViewRemoved", false)
+        }
+
+        if (isLoadingViewRemoved) {
+            binding.homeLoadingCt.visibility = View.GONE
+        } else {
+            binding.homeLoadingCt.visibility = View.VISIBLE
+        }
+
+        Handler().postDelayed({
+            if (!isLoadingViewRemoved) {
+                binding.homeLoadingCt.visibility = View.GONE
+                isLoadingViewRemoved = true
+            }
+        }, 2000)
 
         binding.homeShowBtn.setOnClickListener{
             showRecyclerViews()
@@ -69,6 +88,11 @@ class HomeFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("LoadingViewRemoved", isLoadingViewRemoved)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
