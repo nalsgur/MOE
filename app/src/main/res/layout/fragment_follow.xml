@@ -48,7 +48,7 @@
             android:layout_marginRight="10dp" />
 
         <ImageView
-            android:id="@+id/follow_homebtn"
+            android:id="@+id/follow_mypagebtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/mypage_icon"

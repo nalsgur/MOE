@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moe.MainActivity
@@ -26,7 +27,6 @@ class FollowFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFollowBinding.inflate(inflater,container,false)
 
-
         val recyclerview = binding.followRv
 
         val itemlist = ArrayList<FollowItem>()
@@ -42,16 +42,8 @@ class FollowFragment : Fragment() {
         recyclerview.adapter = followadapter
         recyclerview.layoutManager = GridLayoutManager(context,2)
 
-        var changemode = false
         binding.followChangemode.setOnClickListener {
-            changemode = !changemode
-            if(changemode){
-                //카드모드로 변경
-                binding.followChangemode.setImageResource(R.drawable.follow_changemode_after)
-            } else {
-                //기본모드로 변경
-                binding.followChangemode.setImageResource(R.drawable.follow_changemode)
-            }
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, FollowCardFragment()).addToBackStack(null).commit()
         }
 
         var isnew = 0
@@ -95,9 +87,9 @@ class FollowFragment : Fragment() {
             (activity as MainActivity).binding.mainBtv.selectedItemId = R.id.fragment_home
         }
 
-        //홈버튼 클릭시
-        binding.followHomebtn.setOnClickListener {
-
+        //마이페이지 버튼 클릭시
+        binding.followMypagebtn.setOnClickListener {
+            (activity as MainActivity).binding.mainBtv.selectedItemId = R.id.fragment_mypage
         }
 
         //검색버튼 클릭시
