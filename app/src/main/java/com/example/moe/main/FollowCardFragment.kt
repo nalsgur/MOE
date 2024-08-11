@@ -34,7 +34,7 @@ class FollowCardFragment : Fragment() {
         }
         //카드모드 클릭시
         binding.followCardChangemodbtn.setOnClickListener{
-            parentFragmentManager.beginTransaction().replace(R.id.main_frm, FollowFragment()).addToBackStack(null).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, FollowFragment()).commit()
         }
 
 

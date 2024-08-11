@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moe.HomeFragment
 import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.SearchActivity
@@ -43,7 +44,7 @@ class FollowFragment : Fragment() {
         recyclerview.layoutManager = GridLayoutManager(context,2)
 
         binding.followChangemode.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.main_frm, FollowCardFragment()).addToBackStack(null).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, FollowCardFragment()).commit()
         }
 
         var isnew = 0
