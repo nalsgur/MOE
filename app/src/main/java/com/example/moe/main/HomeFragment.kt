@@ -164,7 +164,7 @@ class HomeFragment : Fragment() {
                         Log.d("HomeFragment", "Fetched top liked exhibitions: $exTopLiked")
                         exAdapterTopLiked.updateDefaultData(exTopLiked)
                     } else if (data is FilterResponse<*>) {
-                        val exTopLiked = (data as FilterResponse<ExFilterTopLike>).exFilterTop
+                        val exTopLiked = (data as FilterResponse<ExFilterTopLike>).content
                         Log.d("HomeFragment", "Fetched top liked filter exhibitions: $exTopLiked")
                         exAdapterTopLiked.updateFilterData(exTopLiked)
                     }
@@ -201,7 +201,7 @@ class HomeFragment : Fragment() {
                         Log.d("HomeFragment", "Fetched latest exhibitions: $exLatest")
                         exAdapterLatest.updateDefaultData(exLatest)
                     } else if (data is FilterResponse<*>) {
-                        val exLatest = (data as FilterResponse<ExFilterLatest>).exFilterLatest
+                        val exLatest = (data as FilterResponse<ExFilterLatest>).content
                         Log.d("HomeFragment", "Fetched latest filter exhibitions: $exLatest")
                         exAdapterLatest.updateFilterData(exLatest)
                     }
@@ -237,7 +237,7 @@ class HomeFragment : Fragment() {
                         Log.d("HomeFragment", "Fetched top liked popup store: $popupTopLike")
                         popupAdapterTopLiked.updateDefaultData(popupTopLike)
                     } else if (data is FilterResponse<*>) {
-                        val popupTopLike = (data as FilterResponse<PopupFilterTopLike>).popupFilterTop
+                        val popupTopLike = (data as FilterResponse<PopupFilterTopLike>).content
                         Log.d("HomeFragment", "Fetched top liked filter popup store: $popupTopLike")
                         popupAdapterTopLiked.updateFilterData(popupTopLike)
                     }
@@ -273,7 +273,7 @@ class HomeFragment : Fragment() {
                         Log.d("HomeFragment", "Fetched latest popup store: $popupLatest")
                         popupAdapterLatest.updateDefaultData(popupLatest)
                     } else if (data is FilterResponse<*>) {
-                        val popupLatest = (data as FilterResponse<PopupFilterLatest>).popupFilterLatest
+                        val popupLatest = (data as FilterResponse<PopupFilterLatest>).content
                         Log.d("HomeFragment", "Fetched latest filter popup store: $popupLatest")
                         popupAdapterLatest.updateFilterData(popupLatest)
                     }
