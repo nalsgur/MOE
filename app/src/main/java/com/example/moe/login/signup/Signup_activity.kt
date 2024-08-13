@@ -99,6 +99,18 @@ class Signup_activity : AppCompatActivity() {
         viewModel.isPrivacy.observe(this, Observer { checkConfirmButtonState() })
     }
 
+    private fun updateAllCheckedState() {
+        val allChecked = isUseChecked && isPrivacyChecked && isMarketingChecked && isAdChecked
+        if (isAllChecked != allChecked) {
+            isAllChecked = allChecked
+            binding.signupCheckboxbtnIv.setImageResource(
+                if (isAllChecked) R.drawable.signup_ckeckbox_btn_after else R.drawable.signup_checkbox_btn
+            )
+            binding.signupCheckboxbtnTv.setTextColor(getColor(if (isAllChecked) R.color.black else R.color.grey_300))
+        }
+        //checkConfirmButtonState()
+    }
+
     private fun toggleAllCheckboxes() {
         isAllChecked = !isAllChecked
         binding.signupCheckboxbtnIv.setImageResource(
@@ -131,6 +143,7 @@ class Signup_activity : AppCompatActivity() {
         )
         binding.signupUsebtnTv.setTextColor(getColor(if (isUseChecked) R.color.black else R.color.grey_300))
         viewModel.toggleUse()
+        updateAllCheckedState()
     }
 
     private fun togglePrivacyCheckbox() {
@@ -140,6 +153,7 @@ class Signup_activity : AppCompatActivity() {
         )
         binding.signupPrivacybtnTv.setTextColor(getColor(if (isPrivacyChecked) R.color.black else R.color.grey_300))
         viewModel.togglePrivacy()
+        updateAllCheckedState()
     }
 
     private fun toggleMarketingCheckbox() {
@@ -148,6 +162,7 @@ class Signup_activity : AppCompatActivity() {
             if (isMarketingChecked) R.drawable.signup_check_btn_after else R.drawable.signup_check_btn
         )
         binding.signupMarketingbtnTv.setTextColor(getColor(if (isMarketingChecked) R.color.black else R.color.grey_300))
+        updateAllCheckedState()
     }
 
     private fun toggleAdCheckbox() {
@@ -156,6 +171,7 @@ class Signup_activity : AppCompatActivity() {
             if (isAdChecked) R.drawable.signup_check_btn_after else R.drawable.signup_check_btn
         )
         binding.signupAdbtnTv.setTextColor(getColor(if (isAdChecked) R.color.black else R.color.grey_300))
+        updateAllCheckedState()
     }
 
     private fun checkConfirmButtonState() {

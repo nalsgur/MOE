@@ -32,6 +32,8 @@ class Signup_Login_Activity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding.signupLoginIdcheckbtn.isEnabled = false
+        binding.signupLoginNextbtn.isEnabled = false
 
         binding.signupLoginBackbtn.setOnClickListener { finish() }
 
@@ -62,17 +64,31 @@ class Signup_Login_Activity : AppCompatActivity() {
             val pwtext = binding.signupLoginPwet.text.toString()
             val pwtext_check = binding.signupLoginPwchecket.text.toString()
 
-            if(idtext.isNotEmpty()) {
+            if(idtext.isNotEmpty() && idtext.length==11) {
+                binding.signupLoginIdcheckbtn.isEnabled = true
+                binding.signupLoginIdtv.text = "중복 확인을 눌러주세요."
+                binding.signupLoginIdtv.setTextColor(getColor(R.color.navy))
                 binding.signupLoginIdcheckbtn.setImageResource(R.drawable.signup_login_idcheckbtn_after)
             } else {
+                binding.signupLoginIdcheckbtn.isEnabled = false
+                binding.signupLoginIdtv.text = "잘못된 아이디입니다."
+                binding.signupLoginIdtv.setTextColor(getColor(R.color.red))
                 binding.signupLoginIdcheckbtn.setImageResource(R.drawable.signup_login_idcheckbtn)
             }
-            if(pwtext == pwtext_check && pwtext.isNotEmpty()){
-                binding.signupLoginPwtv.text = "비밀번호가 일치합니다."
-                binding.signupLoginPwtv.setTextColor(getColor(R.color.navy))
-            }else {
-                binding.signupLoginPwtv.text = "비밀번호가 일치하지 않습니다."
-                binding.signupLoginPwtv.setTextColor(getColor(R.color.red))
+
+            if (pwtext.length>=1) {
+                if (pwtext.length >= 8) {
+                    if(pwtext == pwtext_check && pwtext.isNotEmpty()){
+                        binding.signupLoginPwtv.text = "비밀번호가 일치합니다."
+                        binding.signupLoginPwtv.setTextColor(getColor(R.color.navy))
+                    }else {
+                        binding.signupLoginPwtv.text = "비밀번호가 일치하지 않습니다."
+                        binding.signupLoginPwtv.setTextColor(getColor(R.color.red))
+                    }
+                } else {
+                    binding.signupLoginPwtv.text = "비밀번호는 최소 8자리 이상이어야 합니다."
+                    binding.signupLoginPwtv.setTextColor(getColor(R.color.red))
+                }
             }
 
             binding.signupLoginNextbtn.isEnabled = idtext.isNotEmpty() && pwtext.isNotEmpty() && pwtext==pwtext_check
@@ -89,7 +105,7 @@ class Signup_Login_Activity : AppCompatActivity() {
         }
 
         override fun afterTextChanged(s: Editable?) {
-            //not use
+
         }
     }
 }

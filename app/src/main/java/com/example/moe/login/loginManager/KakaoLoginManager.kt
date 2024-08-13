@@ -19,8 +19,8 @@ class KakaoLoginManager(private val context: Context) {
             Log.e("KAKAO ACCOUNT LOGIN", "Kakao Account Login Failed : ${error.message}")
         } else if (token != null) {
             Log.i("KAKAO ACCOUNT LOGIN", "Kakao Account Login Success : ${token.accessToken}")
-//            context.startActivity(Intent(context, MainActivity::class.java))
-            kakaoLoginSuccess(token)
+            context.startActivity(Intent(context, MainActivity::class.java))
+//            kakaoLoginSuccess(token)
         }
     }
 
@@ -34,8 +34,8 @@ class KakaoLoginManager(private val context: Context) {
 
                 } else if (token != null) {
                     Log.i("KAKAO LOGIN", "Kakao Login Success : ${token.accessToken}")
-//                    context.startActivity(Intent(context, MainActivity::class.java))
-                    kakaoLoginSuccess(token)
+                    context.startActivity(Intent(context, MainActivity::class.java))
+//                    kakaoLoginSuccess(token)
                 }
             }
         } else {
@@ -53,6 +53,7 @@ class KakaoLoginManager(private val context: Context) {
             override fun onResponse(call: Call<JwtResponse>, response: Response<JwtResponse>) {
                 if (response.isSuccessful) {
                     val jwtToken = response.body()?.jwtToken
+                    Log.d("JWT TOKEN", "TOKEN 발급: $jwtToken" )
                     jwtToken?.let {
                         tokenManager.saveJwtToken("kakao", it)
                         val intent = Intent(context, MainActivity::class.java)
