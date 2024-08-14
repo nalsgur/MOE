@@ -54,24 +54,13 @@
             android:exported="false" />
         <activity
             android:name=".detail.record.ui.DetailActivity"
-            android:exported="false"
-            android:taskAffinity="com.example.moe.multiFinish" />
+            android:exported="false"/>
         <activity
             android:name=".detail.search.ui.SearchActivity"
-            android:exported="false"
-            android:taskAffinity="com.example.moe.multiFinish" />
+            android:exported="false"/>
         <activity
             android:name=".main.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".main.LoadingActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".login.NewpwActivity"
             android:exported="false" />
@@ -84,7 +73,13 @@
         <activity
             android:name=".login.LoginActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
