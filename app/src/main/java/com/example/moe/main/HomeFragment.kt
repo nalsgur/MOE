@@ -27,6 +27,9 @@ import com.example.moe.MainAPI.PopupStoresLatest
 import com.example.moe.MainAPI.PopupStoresTopLiked
 import com.example.moe.MainAPI.RetrofitClient
 import com.example.moe.MainAPI.SharedViewModel
+import com.example.moe.detail.record.ui.DetailActivity
+import com.example.moe.detail.search.entities.Search
+import com.example.moe.detail.search.ui.SearchActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moe.R
-import com.example.moe.Search
 import com.example.moe.databinding.ItemShowBinding
+import com.example.moe.detail.search.entities.Search
 
 class PopupTopLikedAdapter(
     private var popupStores: List<PopupStoresTopLiked> = emptyList(),
@@ -111,7 +111,8 @@ private fun PopupStoresTopLiked.toSearch(): Search {
         photo = this.photoUrl ?: "",
         startDate = this.startDate,
         endDate = this.endDate,
-        follow = this.heart
+        follow = this.heart,
+        popupStore = true
     )
 }
 
@@ -122,6 +123,7 @@ private fun PopupFilterTopLike.toSearch(): Search {
         photo = this.photoUrl ?: "",
         startDate = this.startDate,
         endDate = this.endDate,
-        follow = this.heart
+        follow = this.heart,
+        popupStore = true
     )
 }

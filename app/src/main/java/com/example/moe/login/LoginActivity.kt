@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.moe.MainActivity
+import com.example.moe.main.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.ActivityLoginBinding
-import com.example.moe.login.loginManager.DefaultLoginManager
 import com.example.moe.login.loginManager.FacebookLoginManager
 import com.example.moe.login.loginManager.KakaoLoginManager
 import com.example.moe.login.loginManager.NaverLoginManager

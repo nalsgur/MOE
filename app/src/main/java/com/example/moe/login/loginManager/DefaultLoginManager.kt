@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import com.example.moe.MainActivity
+import com.example.moe.main.MainActivity
 import com.example.moe.login.LoginActivity
 import retrofit2.Call
 import retrofit2.Callback

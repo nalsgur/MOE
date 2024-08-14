@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.RetrofitService
 import com.example.moe.databinding.FragmentMypageBinding

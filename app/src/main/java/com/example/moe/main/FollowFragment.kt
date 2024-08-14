@@ -10,11 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moe.MainActivity
 import com.example.moe.R
-import com.example.moe.SearchActivity
 import com.example.moe.databinding.FragmentFollowBinding
 import com.example.moe.databinding.ItemFollowBinding
+import com.example.moe.detail.search.ui.SearchActivity
 
 class FollowFragment : Fragment() {
     private lateinit var binding : FragmentFollowBinding

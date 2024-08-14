@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context=".SearchActivity">
+    tools:context=".detail.search.ui.SearchActivity">
 
     <LinearLayout
         android:id="@+id/topBar_ll"
@@ -45,6 +45,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
             <ImageView
+                android:id="@+id/search_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/searchIcon"
@@ -55,7 +56,7 @@
                 android:layout_marginStart="15dp"/>
             <EditText
                 android:id="@+id/search_et"
-                android:layout_width="275dp"
+                android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:autofillHints=""
                 android:inputType="text|textNoSuggestions"
@@ -63,13 +64,13 @@
                 android:maxLength="30"
                 android:hint="@string/search"
                 android:textSize="17sp"
+                android:paddingStart="44dp"
                 android:fontFamily="@font/freesentation_4regular"
-                android:paddingStart="18dp"
                 android:textColorHint="@color/grey_300"
                 android:imeOptions="actionSearch"
                 android:letterSpacing="0.016"
                 app:layout_constraintTop_toTopOf="@id/search_background_iv"
-                app:layout_constraintStart_toStartOf="@id/search_background_iv"
+                app:layout_constraintStart_toEndOf="@id/search_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:background="@null"
                 tools:ignore="RtlSymmetry" />
