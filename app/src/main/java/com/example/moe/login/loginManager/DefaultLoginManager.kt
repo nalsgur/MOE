@@ -40,6 +40,37 @@ class DefaultLoginManager(private val context: Context) {
 //                Toast.makeText(context, "로그인 실패: 서버와 연결할 수 없습니다.", Toast.LENGTH_SHORT).show()
             }
         })
-
     }
+
+    fun logout() {
+        val jwtToken = tokenManager.getJwtToken("default").toString()
+
+        if (jwtToken.isNullOrEmpty()) {
+            Toast.makeText(context, "로그인 상태가 아닙니다", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        loginApiSever.logoutUser(jwtToken).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+//                    Toast.makeText(context, "로그아웃 성공", Toast.LENGTH_SHORT).show()
+                    tokenManager.clearJwtToken("default")
+                    val intent = Intent(context, LoginActivity::class.java)
+                    context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                    if (context is MainActivity) {
+                        context.finish()
+                    }
+                } else {
+//                    Toast.makeText(context, "로그아웃 실패: ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.e("DEFAULT LOGOUT", "Error: ${t.message}")
+//                Toast.makeText(context, "로그아웃 실패: 서버와 연결할 수 없습니다.", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
 }

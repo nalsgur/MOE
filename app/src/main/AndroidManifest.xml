@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
 
     <application
         android:allowBackup="true"
@@ -16,50 +16,51 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOE"
         tools:targetApi="31">
-        <activity
-            android:name=".detail.record.ui.WriteActivity"
-            android:exported="false" />
+
         <activity
             android:name=".signup.Signup_Login_Name_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".signup.Signup_Login_Finish_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".signup.Signup_Login_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_Use_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_QNA_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_ProfileEdit_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_Privacy_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_Marketing_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_Introduce_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_Inputaccount_Activity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".mypage.Mypage_Account_Activity"
+            android:exported="false"/>
+        <activity
+            android:name=".DetailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".detail.record.ui.DetailActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".detail.search.ui.SearchActivity"
-            android:exported="false"/>
-        <activity
-            android:name=".main.MainActivity"
+            android:name=".main.LoadingActivity"
             android:exported="false"/>
         <activity
             android:name=".login.NewpwActivity"
@@ -76,7 +77,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -85,37 +85,32 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
-                    android:host="oauth"
-                    android:scheme="kakao946fb56b69f6fc6e54155a504e78ac99" />
+                <data android:host="oauth"
+                    android:scheme="kakao946fb56b69f6fc6e54155a504e78ac99"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" />
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"/>
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+            android:value="@string/facebook_app_id"/>
         <meta-data
             android:name="com.facebook.sdk.ClientToken"
-            android:value="@string/facebook_client_token" />
+            android:value="@string/facebook_client_token"/>
     </application>
 
 </manifest>
