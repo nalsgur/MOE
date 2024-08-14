@@ -53,6 +53,7 @@ class KakaoLoginManager(private val context: Context) {
             override fun onResponse(call: Call<JwtResponse>, response: Response<JwtResponse>) {
                 if (response.isSuccessful) {
                     val jwtToken = response.body()?.jwtToken
+                    Log.d("JWT TOKEN", "TOKEN 발급: $jwtToken" )
                     jwtToken?.let {
                         tokenManager.saveJwtToken("kakao", it)
                         val intent = Intent(context, MainActivity::class.java)

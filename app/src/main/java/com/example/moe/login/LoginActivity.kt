@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var kakaoLoginManager: KakaoLoginManager
     private lateinit var naverLoginManager: NaverLoginManager
     private lateinit var facebookLoginManager: FacebookLoginManager
-    //private lateinit var defaultLoginManager: DefaultLoginManager
+    private lateinit var defaultLoginManager: DefaultLoginManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,16 +64,16 @@ class LoginActivity : AppCompatActivity() {
             if (phoneNumber.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
             } else {
-                //defaultLoginManager.login(phoneNumber, password)
-                if(phoneNumber.length==11 && password.length>=8) {
-                    Toast.makeText(this, "로그인 성공하셨습니다.", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                } else if (phoneNumber.length!=11) {
-                    Toast.makeText(this, "아이디가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-                } else  {
-                    Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-                }
+                defaultLoginManager.login(phoneNumber, password)
+//                if(phoneNumber.length==11 && password.length>=8) {
+//                    Toast.makeText(this, "로그인 성공하셨습니다.", Toast.LENGTH_SHORT).show()
+//                    startActivity(Intent(this, MainActivity::class.java))
+//                    finish()
+//                } else if (phoneNumber.length!=11) {
+//                    Toast.makeText(this, "아이디가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+//                } else  {
+//                    Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+//                }
             }
         }
 
@@ -96,6 +96,7 @@ class LoginActivity : AppCompatActivity() {
         kakaoLoginManager.KakaoLogout()
         naverLoginManager.NaverLogout()
         facebookLoginManager.facebookLogout()
+        defaultLoginManager.logout()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

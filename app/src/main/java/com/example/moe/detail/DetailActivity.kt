@@ -55,7 +55,9 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
             } else if (data?.data != null) {
                 // 단일 이미지를 선택한 경우
                 val imageUri = data.data
+                Log.d("DETAIL_ACTIVITY", "Selected URI: ${imageUri.toString()}")
                 val photo = Photo(listOf(imageUri.toString()))
+                Log.d("DETAIL_ACTIVITY", "Photo object: $photo")
                 val recordService = RecordService()
                 recordService.uploadPhoto(search.id, photo)
                 finishAffinity() //MainActivity로 돌아감 MainActivity에서 기록 프래그먼트로 전환해야 함
