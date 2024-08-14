@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.moe.R
-import com.example.moe.Search
 import com.example.moe.databinding.ItemShowBinding
+import com.example.moe.detail.search.entities.Search
 
 class ExLatestAdapter(
     private var exhibitions : List<ExhibitionLatest> = emptyList(),
@@ -114,7 +114,8 @@ private fun ExhibitionLatest.toSearch(): Search {
         photo = this.photoUrl ?: "",
         startDate = this.startDate,
         endDate = this.endDate,
-        follow = this.heart
+        follow = this.heart,
+        popupStore = false
     )
 }
 
@@ -125,6 +126,7 @@ private fun ExFilterLatest.toSearch(): Search {
         photo = this.photoUrl ?: "",
         startDate = this.startDate,
         endDate = this.endDate,
-        follow = this.heart
+        follow = this.heart,
+        popupStore = false
     )
 }

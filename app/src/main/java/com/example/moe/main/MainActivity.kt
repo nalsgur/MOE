@@ -1,15 +1,17 @@
-package com.example.moe
+package com.example.moe.main
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
+import com.example.moe.HomeFragment
+import com.example.moe.R
 import com.example.moe.databinding.ActivityMainBinding
-import com.example.moe.main.FollowFragment
-import com.example.moe.main.MypageFragment
-import com.example.moe.main.RecordFragment
-import kotlin.math.exp
+import com.example.moe.detail.PageViewModel
+import com.example.moe.detail.record.remote.RecordViewModel
+import com.example.moe.detail.record.ui.RecordFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recordFragment: RecordFragment
     private lateinit var followFragment: FollowFragment
     private lateinit var mypageFragment: MypageFragment
+    private val recordViewModel: RecordViewModel by viewModels()
+    private val pageViewModel: PageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         homeFragment = HomeFragment()
         mapFragment = MapFragment()
-        recordFragment = RecordFragment()
+        recordFragment = RecordFragment(recordViewModel, pageViewModel)
         followFragment = FollowFragment()
         mypageFragment = MypageFragment()
 
@@ -45,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initBottomvigation() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm,HomeFragment())
+            .replace(R.id.main_frm, HomeFragment())
             .commitAllowingStateLoss()
 
         binding.mainBtv.setOnItemSelectedListener { item ->

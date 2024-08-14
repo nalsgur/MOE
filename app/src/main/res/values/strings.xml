@@ -30,5 +30,6 @@
     <string name="noRecord">검색한 기록이 없습니다.</string>
     <string name="add_image_btn">사진 추가하기</string>
     <string name="write_end_btn">글쓰기 완료버튼</string>
+    <string name="addPhoto">사진 추가하기+</string>
 
 </resources>

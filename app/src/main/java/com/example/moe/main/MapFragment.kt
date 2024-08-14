@@ -1,4 +1,4 @@
-package com.example.moe
+package com.example.moe.main
 
 import android.content.Intent
 import android.graphics.Color
@@ -17,12 +17,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.moe.MainAPI.RetrofitClient
 import com.example.moe.MainAPI.SharedViewModel
+import com.example.moe.R
 import com.example.moe.databinding.FragmentMapBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.moe.detail.search.ui.SearchActivity
 
 class MapFragment : Fragment() {
     lateinit var binding: FragmentMapBinding
@@ -164,12 +162,16 @@ class MapFragment : Fragment() {
     private fun updateMapCheckBtn() {
         if (!seoulBtns.isEmpty() || !busanBtns.isEmpty()) {
             binding.mapCheckBtn.isEnabled = true
-            binding.mapCheckBtn.background = ResourcesCompat.getDrawable(resources, R.drawable.main_map_check_btn_click, null)
+            binding.mapCheckBtn.background = ResourcesCompat.getDrawable(resources,
+                R.drawable.main_map_check_btn_click, null)
             binding.mapCheckBtn.setTextColor(Color.WHITE)
         } else {
             binding.mapCheckBtn.isEnabled = false
-            binding.mapCheckBtn.background = ResourcesCompat.getDrawable(resources, R.drawable.main_map_check_btn_default, null)
-            binding.mapCheckBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_300))
+            binding.mapCheckBtn.background = ResourcesCompat.getDrawable(resources,
+                R.drawable.main_map_check_btn_default, null)
+            binding.mapCheckBtn.setTextColor(ContextCompat.getColor(requireContext(),
+                R.color.grey_300
+            ))
         }
     }
 
@@ -179,7 +181,8 @@ class MapFragment : Fragment() {
             textSize = 14f
             setTextColor(Color.WHITE)
             typeface = ResourcesCompat.getFont(context, R.font.freesentation_6semibold)
-            background = ResourcesCompat.getDrawable(resources, R.drawable.main_map_sub_geo_btn_shape, null)
+            background = ResourcesCompat.getDrawable(resources,
+                R.drawable.main_map_sub_geo_btn_shape, null)
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -235,7 +238,8 @@ class MapFragment : Fragment() {
         subBusanBtns.forEach { it.isSelected = false }
 
         binding.mapCheckBtn.isEnabled = false
-        binding.mapCheckBtn.background = ResourcesCompat.getDrawable(resources, R.drawable.main_map_check_btn_default, null)
+        binding.mapCheckBtn.background = ResourcesCompat.getDrawable(resources,
+            R.drawable.main_map_check_btn_default, null)
         binding.mapCheckBtn.setTextColor(ContextCompat.getColor(requireContext(), R.color.grey_300))
 
         val loadingContainer: FrameLayout = binding.loadingContainer

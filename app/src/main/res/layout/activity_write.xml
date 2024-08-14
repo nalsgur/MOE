@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/top_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="25dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/detail_back_btn"
+            android:src="@drawable/search_left_arrow" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintTop_toBottomOf="@id/top_ll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/write_image"
+                android:layout_width="310dp"
+                android:layout_height="377dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="19dp"/>
+            <ImageView
+                android:id="@+id/text_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/write_bg"
+                app:layout_constraintTop_toBottomOf="@id/write_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:id="@+id/et"
+                android:layout_width="310dp"
+                android:layout_height="100dp"
+                android:background="@null"
+                android:fontFamily="@font/freesentation_6semibold"
+                android:gravity="top"
+                android:hint="글을 입력해주세요!"
+                android:inputType="text"
+                android:letterSpacing="0.014"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey_300"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/text_bg"
+                app:layout_constraintEnd_toEndOf="@id/text_bg"
+                app:layout_constraintStart_toStartOf="@id/text_bg"
+                app:layout_constraintTop_toTopOf="@+id/text_bg" />
+
+            <android.widget.Button
+                android:id="@+id/write_end_btn"
+                android:layout_width="55dp"
+                android:layout_height="30dp"
+                android:text="완료"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/navy"
+                android:enabled="false"
+                android:fontFamily="@font/freesentation_6semibold"
+                android:background="@drawable/write_end_bg_default"
+                app:layout_constraintTop_toBottomOf="@id/text_bg"
+                app:layout_constraintEnd_toEndOf="@id/text_bg"
+                android:layout_marginTop="15dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/photo_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/write_end_btn"
+                app:layout_constraintStart_toStartOf="@id/text_bg"
+                tools:listitem="@layout/item_record_photo_small"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                android:layout_marginTop="46dp"
+                tools:itemCount="8"/>
+
+            <FrameLayout
+                android:id="@+id/home_loading_ct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/home_loading"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:progressBackgroundTint="@color/lightNavy"
+                    android:progressTint="@color/navy"
+                    android:progressDrawable="@drawable/main_map_loading"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:src="@drawable/main_moe_logo"
+                    android:layout_gravity="center"/>
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

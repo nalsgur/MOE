@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".DetailActivity">
+    tools:context=".detail.record.ui.DetailActivity">
 
     <LinearLayout
         android:id="@+id/top_ll"
@@ -102,6 +102,7 @@
                 android:layout_marginTop="15dp"/>
 
             <TextView
+                android:id="@+id/record_btn_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_record"
@@ -120,12 +121,14 @@
                 android:layout_width="310dp"
                 android:layout_height="1dp"
                 android:background="@color/white_300"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/record_btn"
                 android:layout_marginTop="30dp"/>
 
             <TextView
+                android:id="@+id/caution"
                 android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:text="@string/detail_notice"
@@ -135,9 +138,22 @@
                 android:lineHeight="12.86sp"
                 android:letterSpacing="0.011"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/line"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/photo_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/record_btn"
+                app:layout_constraintStart_toStartOf="@id/record_btn"
+                android:layout_marginTop="30dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/item_record_photo"
+                android:orientation="horizontal"
+                tools:itemCount="4"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
