@@ -60,9 +60,6 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".main.LoadingActivity"
-            android:exported="false"/>
-        <activity
             android:name=".login.NewpwActivity"
             android:exported="false" />
         <activity
