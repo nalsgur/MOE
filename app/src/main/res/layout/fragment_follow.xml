@@ -96,9 +96,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/follow_btn1"
         android:layout_marginTop="15dp"
+        tools:itemCount="4"
         tools:listitem="@layout/item_follow"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"/>
+
+    <LinearLayout
+        android:id="@+id/follow_paging_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/follow_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:id="@+id/follow_page_prev_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search_small_left_arrow"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/follow_page_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_page"
+            tools:itemCount="1"/>
+        <ImageView
+            android:id="@+id/follow_page_next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/search_small_right_arrow"/>
+    </LinearLayout>
 
 
 

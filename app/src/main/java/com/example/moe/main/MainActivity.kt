@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         homeFragment = HomeFragment()
         mapFragment = MapFragment()
         recordFragment = RecordFragment()
-        followFragment = FollowFragment()
+        followFragment = FollowFragment(SearchViewModel())
         mypageFragment = MypageFragment()
 
         if (savedInstanceState == null) {
