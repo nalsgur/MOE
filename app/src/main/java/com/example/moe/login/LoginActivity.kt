@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
         kakaoLoginManager = KakaoLoginManager(this)
         naverLoginManager = NaverLoginManager(this)
         facebookLoginManager = FacebookLoginManager(this)
+        defaultLoginManager = DefaultLoginManager(this)
 
         val kakaoClientKey = resources.getString(R.string.kakao_key)
         val naverClientId = resources.getString(R.string.naver_client_id)
@@ -64,16 +65,16 @@ class LoginActivity : AppCompatActivity() {
             if (phoneNumber.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
             } else {
-                defaultLoginManager.login(phoneNumber, password)
-//                if(phoneNumber.length==11 && password.length>=8) {
-//                    Toast.makeText(this, "로그인 성공하셨습니다.", Toast.LENGTH_SHORT).show()
-//                    startActivity(Intent(this, MainActivity::class.java))
-//                    finish()
-//                } else if (phoneNumber.length!=11) {
-//                    Toast.makeText(this, "아이디가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-//                } else  {
-//                    Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-//                }
+                //defaultLoginManager.login(phoneNumber, password)
+                if(phoneNumber.length==11 && password.length>=8) {
+                    Toast.makeText(this, "로그인 성공하셨습니다.", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                } else if (phoneNumber.length!=11) {
+                    Toast.makeText(this, "아이디가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                } else  {
+                    Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
