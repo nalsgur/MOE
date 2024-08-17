@@ -92,6 +92,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/follow_btn1"
@@ -99,6 +100,70 @@
         tools:listitem="@layout/item_follow"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"/>
+
+    <LinearLayout
+        android:id="@+id/card_mode_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="170dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/follow_head">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/card_mode_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기안도3"
+                android:textSize="18dp"
+                android:fontFamily="@font/freesentation_6semibold"/>
+            
+            <TextView
+                android:id="@+id/card_mode_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2024.8.12 ~ 2024.8.12"
+                android:textSize="14dp"
+                android:fontFamily="@font/freesentation_4regular"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:paddingTop="70dp"
+            android:paddingBottom="70dp"
+            android:paddingStart="135dp"
+            android:paddingEnd="135dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&lt; 양 옆으로 스크롤해주세요 &gt;"
+            android:textSize="13dp"
+            android:textColor="@color/grey_200"
+            android:textStyle="bold"
+            android:fontFamily="@font/freesentation_4regular"/>
+
+    </LinearLayout>
 
 
 
