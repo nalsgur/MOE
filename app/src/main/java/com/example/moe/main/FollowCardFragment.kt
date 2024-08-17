@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.moe.MainActivity
 import com.example.moe.R
-import com.example.moe.SearchActivity
-import com.example.moe.SearchViewModel
 import com.example.moe.databinding.FragmentFollowCardBinding
+import com.example.moe.detail.search.remote.SearchViewModel
+import com.example.moe.detail.search.ui.SearchActivity
 
 
 class FollowCardFragment : Fragment() {
@@ -35,7 +35,9 @@ class FollowCardFragment : Fragment() {
         }
         //카드모드 클릭시
         binding.followCardChangemodbtn.setOnClickListener{
-            parentFragmentManager.beginTransaction().replace(R.id.main_frm, FollowFragment(SearchViewModel())).commit()
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, FollowFragment(
+                SearchViewModel()
+            )).commit()
         }
 
 

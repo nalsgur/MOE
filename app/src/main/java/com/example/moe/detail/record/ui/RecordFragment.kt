@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.FragmentRecordBinding
 import com.example.moe.detail.PageViewModel
@@ -18,7 +19,6 @@ import com.example.moe.detail.record.remote.RecordViewModel
 import com.example.moe.detail.search.entities.Search
 import com.example.moe.detail.search.ui.PageRVAdapter
 import com.example.moe.detail.search.ui.SearchActivity
-import com.example.moe.main.MainActivity
 
 class RecordFragment(private val recordViewModel: RecordViewModel, private val pageViewModel: PageViewModel) : Fragment() {
     private lateinit var binding : FragmentRecordBinding

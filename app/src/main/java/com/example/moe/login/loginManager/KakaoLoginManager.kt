@@ -3,7 +3,7 @@ package com.example.moe.login.loginManager
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.example.moe.main.MainActivity
+import com.example.moe.MainActivity
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call

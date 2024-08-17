@@ -14,17 +14,15 @@ import androidx.activity.OnBackPressedCallback
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moe.DetailActivity
-import com.example.moe.HomeFragment
 import com.example.moe.MainActivity
-import com.example.moe.PageRVAdapter
 import com.example.moe.R
-import com.example.moe.Search
-import com.example.moe.SearchActivity
-import com.example.moe.SearchRVAdapter
-import com.example.moe.SearchViewModel
 import com.example.moe.databinding.FragmentFollowBinding
 import com.example.moe.databinding.ItemFollowBinding
+import com.example.moe.detail.search.entities.Search
+import com.example.moe.detail.search.remote.SearchViewModel
+import com.example.moe.detail.search.ui.PageRVAdapter
+import com.example.moe.detail.search.ui.SearchActivity
+import com.example.moe.detail.search.ui.SearchRVAdapter
 
 class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
     private lateinit var binding : FragmentFollowBinding
@@ -113,105 +111,6 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
         return binding.root
 
     }
-
-    override fun onStart() {
-        super.onStart()
-        getResult()
-    }
-
-    private fun getResult(){
-        viewModel.searchState.observe(this){
-            when{
-                it.loading ->{
-                    binding.followPagingLl.visibility = View.GONE
-                }
-                it.error != null ->{
-                    binding.followPagingLl.visibility = View.GONE
-                    Log.d("error", it.error)
-                }
-                else ->{
-                    if (it.list != null) {
-                        initRecyclerView(it.list)
-                        setPageIndex(it.list)
-                        binding.followPagingLl.visibility = View.VISIBLE
-                    } else{
-                        binding.followPagingLl.visibility = View.GONE
-                        Log.d("result", "no result")
-                    }
-                }
-            }
-        }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun initRecyclerView(list: List<Search>) {
-        val searchAdapter = SearchRVAdapter(list, viewModel)
-        viewModel.pageIndex.observe(this) {
-            searchAdapter.notifyDataSetChanged()
-        }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun setPageIndex(list: List<Search>){
-        val resultCount = list.size
-        val totalPages = if (resultCount % 6 == 0) resultCount / 6 else resultCount / 6 + 1
-        val pageIndexList = splitIntoChunks(totalPages)
-        val pageAdapter = PageRVAdapter(pageIndexList, viewModel)
-        binding.followPageRv.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.followPageRv.adapter = pageAdapter
-
-        binding.followPageNextBtn.setOnClickListener {
-            if(viewModel.pageIndex.value!! < totalPages){
-                if (viewModel.pageIndex.value!! % 3 == 0){
-                    viewModel.increaseDisplayIndex()
-                    viewModel.increaseOffset()
-                    viewModel.increaseIndex()
-                }else{
-                    viewModel.increaseIndex()
-                }
-            }
-        }
-
-        binding.followPagePrevBtn.setOnClickListener {
-            if(viewModel.pageIndex.value!! > 1){
-                if (viewModel.pageIndex.value!! % 3 == 1){
-                    viewModel.decreaseDisplayIndex()
-                    viewModel.decreaseOffset()
-                    viewModel.decreaseIndex()
-                }else{
-                    viewModel.decreaseIndex()
-                }
-            }
-        }
-
-        viewModel.pageIndex.observe(this) {
-            pageAdapter.notifyDataSetChanged()
-        }
-        viewModel.displayIndex.observe(this){
-            pageAdapter.notifyDataSetChanged()
-        }
-        viewModel.offset.observe(this){
-            pageAdapter.notifyDataSetChanged()
-        }
-    }
-
-    private fun splitIntoChunks(number: Int): List<Int> {
-        val result = mutableListOf<Int>()
-        var remaining = number
-
-        while (remaining > 0) {
-            if (remaining >= 3) {
-                result.add(3)
-            } else {
-                result.add(remaining)
-            }
-            remaining -= 3
-        }
-
-        return result
-    }
-
 }
 
 class FollowRecyclerAdapter (

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import com.example.moe.databinding.ActivityMainBinding
+import com.example.moe.detail.PageViewModel
+import com.example.moe.detail.record.remote.RecordViewModel
 import com.example.moe.detail.record.ui.RecordFragment
 import com.example.moe.detail.search.remote.SearchViewModel
 import com.example.moe.main.FollowFragment
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         homeFragment = HomeFragment()
         mapFragment = MapFragment()
-        recordFragment = RecordFragment()
+        recordFragment = RecordFragment(RecordViewModel(), PageViewModel())
         followFragment = FollowFragment(SearchViewModel())
         mypageFragment = MypageFragment()
 
