@@ -21,6 +21,7 @@ import com.example.moe.databinding.ActivitySignupLoginBinding
 
 class Signup_Login_Activity : AppCompatActivity() {
     private lateinit var binding : ActivitySignupLoginBinding
+    private var TAG : String = "input_idandpw"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,10 +94,14 @@ class Signup_Login_Activity : AppCompatActivity() {
 
             binding.signupLoginNextbtn.isEnabled = idtext.isNotEmpty() && pwtext.isNotEmpty() && pwtext==pwtext_check
 
+            //다음버튼 활성화시 엑티비티 이동
             if (binding.signupLoginNextbtn.isEnabled) {
                 binding.signupLoginNextbtn.setImageResource(R.drawable.signup_nextbtn_after)
                 binding.signupLoginNextbtn.setOnClickListener {
                     val intent = Intent(this@Signup_Login_Activity, Signup_Login_Name_Activity::class.java)
+                    intent.putExtra("user_Id",binding.signupLoginIdet.text.toString())
+                    intent.putExtra("user_Pw",binding.signupLoginPwet.text.toString())
+                    intent.putExtra("user_comfirmpw",binding.signupLoginPwchecket.text.toString())
                     startActivity(intent)
                 }
             } else {

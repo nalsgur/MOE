@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".main.FollowCardFragment">
+
+    <ImageView
+        android:id="@+id/follow_card_backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mypage_backbtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="팔로우"
+        android:textSize="18sp"
+        android:fontFamily="@font/freesentation_8extrabold"
+        app:layout_constraintTop_toTopOf="@id/follow_card_backbtn"
+        app:layout_constraintBottom_toBottomOf="@id/follow_card_backbtn"
+        app:layout_constraintStart_toEndOf="@id/follow_card_backbtn"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
+        android:id="@+id/follow_card_searchbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/follow_searchbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/follow_card_backbtn"
+        android:layout_marginRight="59dp"/>
+
+    <ImageView
+        android:id="@+id/follow_card_mypagebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/follow_moeicon"
+        app:layout_constraintTop_toTopOf="@id/follow_card_searchbtn"
+        app:layout_constraintStart_toEndOf="@id/follow_card_searchbtn"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
+        android:id="@+id/follow_card_changemodbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/follow_changemode_after"
+        app:layout_constraintTop_toBottomOf="@id/follow_card_searchbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="25dp" />
+
+    <TextView
+        android:id="@+id/follow_card_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="제목없음"
+        android:fontFamily="@font/freesentation_6semibold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/follow_card_changemodbtn"
+        android:layout_marginTop="87dp"/>
+
+    <TextView
+        android:id="@+id/follow_card_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="날짜입력"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/follow_card_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <FrameLayout
+        android:id="@+id/follow_card_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintTop_toBottomOf="@id/follow_card_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/follow_card_cardview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/follow_card_cardview"
+        app:layout_constraintBottom_toBottomOf="@id/follow_card_cardview"
+        android:text="구현 중 입니다 ..." />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="양옆으로 스크롤 해주세요."
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/follow_card_cardview"
+        android:layout_marginTop="63dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
