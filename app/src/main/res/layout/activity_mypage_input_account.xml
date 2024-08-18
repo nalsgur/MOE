@@ -107,7 +107,7 @@
         android:id="@+id/input_account_please"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비밀번호 8자리를 입력해주세요."
+        android:text="비밀번호 8자리를 입력해주세요. (초기는 0 8번)"
         android:textSize="13sp"
         android:fontFamily="@font/freesentation_6semibold"
         app:layout_constraintStart_toStartOf="@id/input_account_pwboxiv"

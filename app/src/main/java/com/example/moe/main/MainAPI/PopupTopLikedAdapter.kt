@@ -21,7 +21,7 @@ class PopupTopLikedAdapter(
         fun bind(item: Any) {
             when(item) {
                 is PopupStoresTopLiked -> {
-                    binding.itemTitleTx.text = if (item.name.length > 8) {
+                    binding.itemTitleTx.text = if (item.name.length > 11) {
                         "${item.name.substring(0, 11)} ..."
                     } else {
                         item.name

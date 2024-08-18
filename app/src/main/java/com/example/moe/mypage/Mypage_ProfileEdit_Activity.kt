@@ -1,18 +1,25 @@
 package com.example.moe.mypage
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.RetrofitService
 import com.example.moe.changeName
 import com.example.moe.databinding.ActivityMypageProfileeditBinding
+import com.example.moe.mypage.mypageAPI.MypageEditNameRequest
+import com.example.moe.mypage.mypageAPI.MypageEditNameResponse
+import com.example.moe.mypage.mypageAPI.MypageResponse
+import com.example.moe.mypage.mypageAPI.MypageRetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,34 +66,35 @@ class Mypage_ProfileEdit_Activity : AppCompatActivity() {
             finish()
         }
 
-        val changeName = HashMap<String, Any> ()
         binding.profileEditNicknamebtn.setOnClickListener {
             if(isname) {
-                val retrofit = Retrofit.Builder()
-                    .baseUrl("https://umc.memoryofexhibition.com/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-
-                val retrofitService = retrofit.create(RetrofitService::class.java)
-                retrofitService.changeName(changeName).enqueue(object : Callback<changeName>{
+                val request = MypageEditNameRequest(
+                    binding.profileEditNameet.text.toString()
+                )
+                MypageRetrofitClient.apiService.mypageeditname(request).enqueue(object : Callback<MypageEditNameResponse>{
                     override fun onResponse(
-                        call: Call<changeName>,
-                        response: Response<changeName>
+                        call: Call<MypageEditNameResponse>,
+                        response: Response<MypageEditNameResponse>
                     ) {
                         if(response.isSuccessful) {
-                            val changename = response.body()
+                            val editnameResponse = response.body()
+                            editnameResponse?.let {
+                                Log.d("editname1", "message : ${it.message} ")
+                            }
+                        }else {
+                            Log.e("editname1", "Response Failed : ${response.errorBody()?.string()}" )
                         }
                     }
 
-                    override fun onFailure(call: Call<changeName>, t: Throwable) {
-                        Log.d("retrofit", "요청 실패")
+                    override fun onFailure(call: Call<MypageEditNameResponse>, t: Throwable) {
+                        Log.e("editname1", "실패이유 : ${t.message}" )
                     }
-
                 })
 
-
-
-
+                Toast.makeText(this, "닉네임이 성공적으로 변경되었습니다.", Toast.LENGTH_SHORT).show()
+                val intent = Intent()
+                intent.putExtra("newNickname" , binding.profileEditNameet.text.toString())
+                setResult(Activity.RESULT_OK, intent)
                 finish()
             }
         }

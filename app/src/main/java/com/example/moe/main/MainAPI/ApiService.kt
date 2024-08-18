@@ -20,7 +20,6 @@ interface ApiService {
     @GET("popupStores/latest")
     fun getLatestPopup(): Call<DataResponse<PopupStoresLatest>>
 
-
     // 필터링 있는 경우
     @GET("exhibitions/top-liked")
     fun getFilteredTopLikedEx(

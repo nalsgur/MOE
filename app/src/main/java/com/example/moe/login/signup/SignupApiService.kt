@@ -5,6 +5,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface SignupApiService {
-    @POST("/user/join")
+    @POST("user/join")
     fun signup(@Body request: SignupRequest): Call<SignupResponse>
 }

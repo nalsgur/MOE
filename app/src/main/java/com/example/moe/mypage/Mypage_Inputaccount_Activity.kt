@@ -31,7 +31,7 @@ class Mypage_Inputaccount_Activity : AppCompatActivity() {
         }
 
         //비밀번호를 서버로 요청코드 작성
-        var answer_pw = "000000"
+        var answer_pw = "00000000"
 
         //textwatcher를 이용하여 text가 입력되는걸 실시간으로 확인
         binding.inputAccountPwet.addTextChangedListener(object: TextWatcher {
