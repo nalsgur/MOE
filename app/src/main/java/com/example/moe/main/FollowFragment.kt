@@ -11,9 +11,26 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moe.MainAPI.DataResponse
+import com.example.moe.MainAPI.ExFilterLatest
+import com.example.moe.MainAPI.ExFilterTopLike
+import com.example.moe.MainAPI.ExLatestAdapter
+import com.example.moe.MainAPI.ExTopLikedAdapter
+import com.example.moe.MainAPI.ExhibitionLatest
+import com.example.moe.MainAPI.ExhibitionTopLiked
+import com.example.moe.MainAPI.FilterResponse
+import com.example.moe.MainAPI.PopupFilterLatest
+import com.example.moe.MainAPI.PopupFilterTopLike
+import com.example.moe.MainAPI.PopupLatestAdapter
+import com.example.moe.MainAPI.PopupStoresLatest
+import com.example.moe.MainAPI.PopupStoresTopLiked
+import com.example.moe.MainAPI.PopupTopLikedAdapter
+import com.example.moe.MainAPI.RetrofitClient
+import com.example.moe.MainAPI.SharedViewModel
 import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.FragmentFollowBinding
@@ -23,9 +40,18 @@ import com.example.moe.detail.search.remote.SearchViewModel
 import com.example.moe.detail.search.ui.PageRVAdapter
 import com.example.moe.detail.search.ui.SearchActivity
 import com.example.moe.detail.search.ui.SearchRVAdapter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
     private lateinit var binding : FragmentFollowBinding
+    private val apiService by lazy { RetrofitClient.HomeApiService() }
+    private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var exAdapterLatest: ExLatestAdapter
+    private lateinit var exAdapterTopLiked: ExTopLikedAdapter
+    private lateinit var popupAdapterTopLiked: PopupTopLikedAdapter
+    private lateinit var popupAdapterLatest: PopupLatestAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,17 +62,21 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
 
         val recyclerview = binding.followRv
 
-        val itemlist = ArrayList<FollowItem>()
-        itemlist.add(FollowItem("기안도1","12.13"))
-        itemlist.add(FollowItem("기안도2","12.13"))
-        itemlist.add(FollowItem("기안도3","12.13"))
-        itemlist.add(FollowItem("기안도4","12.13"))
+        setupRecyclerView()
 
-        val followadapter = FollowRecyclerAdapter(itemlist)
-        followadapter.notifyDataSetChanged()
+        loadData(isTopLiked = true)
+
+//        val itemlist = ArrayList<FollowItem>()
+//        itemlist.add(FollowItem("기안도1","12.13"))
+//        itemlist.add(FollowItem("기안도2","12.13"))
+//        itemlist.add(FollowItem("기안도3","12.13"))
+//        itemlist.add(FollowItem("기안도4","12.13"))
+//
+//        val followadapter = FollowRecyclerAdapter(itemlist)
+//        followadapter.notifyDataSetChanged()
 
 
-        recyclerview.adapter = followadapter
+        recyclerview.adapter = exAdapterLatest
         recyclerview.layoutManager = GridLayoutManager(context,2)
 
         binding.followChangemode.setOnClickListener {
@@ -70,6 +100,7 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
                 isnew = 0
                 binding.followBtn1.setImageResource(R.drawable.follow_btn1)
             }
+            binding.followRv.adapter = exAdapterTopLiked
         }
         binding.followBtn2.setOnClickListener {
             if(isnew == 0 && isold == 0) {
@@ -86,6 +117,7 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
                 isold = 0
                 binding.followBtn2.setImageResource(R.drawable.follow_btn2)
             }
+            binding.followRv.adapter = exAdapterLatest
         }
         
 
@@ -105,12 +137,178 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
         }
 
 
-
-
-
         return binding.root
 
     }
+
+    private fun setupRecyclerView() {
+        exAdapterTopLiked = ExTopLikedAdapter(isTopLiked = true)
+        exAdapterLatest = ExLatestAdapter(isTopLiked = true)
+        popupAdapterTopLiked = PopupTopLikedAdapter(isTopLiked = true)
+        popupAdapterLatest = PopupLatestAdapter(isTopLiked = true)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        sharedViewModel.selectedFilters.observe(viewLifecycleOwner) {filters ->
+            filters.forEach{(region, districts) ->
+                if (districts.isNotEmpty()) {
+                    loadData(region, districts[0], true)
+                } else {
+                    loadData(isTopLiked = true)
+                    loadData(isTopLiked = false)
+                }
+            }
+        }
+    }
+
+
+    private fun loadData(region: String? = null, district: String? =null, isTopLiked: Boolean = true) {
+        val exTopLikedCall: Call<Any> = when {
+            region != null && district != null && !isTopLiked -> {
+                apiService.getFilteredTopLikedEx(region, district) as Call<Any>
+            }
+            else -> {
+                apiService.getTopLikedEx() as Call<Any>
+            }
+        }
+
+        exTopLikedCall.enqueue(object : Callback<Any> {
+            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data is DataResponse<*>) {
+                        val exTopLiked = (data as DataResponse<ExhibitionTopLiked>).content
+                        Log.d("HomeFragment", "Fetched top liked exhibitions: $exTopLiked")
+                        exAdapterTopLiked.updateDefaultData(exTopLiked)
+                    } else if (data is FilterResponse<*>) {
+                        val exTopLiked = (data as FilterResponse<ExFilterTopLike>).content
+                        Log.d("HomeFragment", "Fetched top liked filter exhibitions: $exTopLiked")
+                        exAdapterTopLiked.updateFilterData(exTopLiked)
+                    }
+
+                } else {
+                    Log.e("HomeFragment", "Response unsuccessful: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                Log.e("HomeFragment", "Failed to fetch top liked exhibitions", t)
+            }
+        })
+
+
+        val exLatestCall: Call<Any> = when {
+            region != null && district != null && !isTopLiked -> {
+                apiService.getFilteredLatestEx(region, district) as Call<Any>
+            }
+            else -> {
+                apiService.getLatestEx() as Call<Any>
+            }
+        }
+
+        exLatestCall.enqueue(object : Callback<Any> {
+            override fun onResponse(
+                call: Call<Any>,
+                response: Response<Any>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data is DataResponse<*>) {
+                        val exLatest = (data as DataResponse<ExhibitionLatest>).content
+                        Log.d("HomeFragment", "Fetched latest exhibitions: $exLatest")
+                        exAdapterLatest.updateDefaultData(exLatest)
+                    } else if (data is FilterResponse<*>) {
+                        val exLatest = (data as FilterResponse<ExFilterLatest>).content
+                        Log.d("HomeFragment", "Fetched latest filter exhibitions: $exLatest")
+                        exAdapterLatest.updateFilterData(exLatest)
+                    }
+                } else {
+                    Log.e("HomeFragment", "Response unsuccessful: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                Log.e("HomeFragment", "Failed to fetch latest exhibitions", t)
+            }
+        })
+
+
+        val popupTopLikeCall: Call<Any> = when {
+            region != null && district != null && !isTopLiked -> {
+                apiService.getFilteredTopLikedPopup(region, district) as Call<Any>
+            }
+            else -> {
+                apiService.getTopLikedPopup() as Call<Any>
+            }
+        }
+
+        popupTopLikeCall.enqueue(object : Callback<Any> {
+            override fun onResponse(
+                call: Call<Any>,
+                response: Response<Any>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data is DataResponse<*>) {
+                        val popupTopLike = (data as DataResponse<PopupStoresTopLiked>).content
+                        Log.d("HomeFragment", "Fetched top liked popup store: $popupTopLike")
+                        popupAdapterTopLiked.updateDefaultData(popupTopLike)
+                    } else if (data is FilterResponse<*>) {
+                        val popupTopLike = (data as FilterResponse<PopupFilterTopLike>).content
+                        Log.d("HomeFragment", "Fetched top liked filter popup store: $popupTopLike")
+                        popupAdapterTopLiked.updateFilterData(popupTopLike)
+                    }
+                } else {
+                    Log.e("HomeFragment", "Response unsuccessful: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                Log.e("HomeFragment", "Failed to fetch top liked popup store", t)
+            }
+        })
+
+
+        val popupLatestCall: Call<Any> = when {
+            region != null && district != null && !isTopLiked -> {
+                apiService.getFilteredLatestPopup(region, district) as Call<Any>
+            }
+            else -> {
+                apiService.getLatestPopup() as Call<Any>
+            }
+        }
+
+        popupLatestCall.enqueue(object : Callback<Any> {
+            override fun onResponse(
+                call: Call<Any>,
+                response: Response<Any>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()
+                    if (data is DataResponse<*>) {
+                        val popupLatest = (data as DataResponse<PopupStoresLatest>).content
+                        Log.d("HomeFragment", "Fetched latest popup store: $popupLatest")
+                        popupAdapterLatest.updateDefaultData(popupLatest)
+                    } else if (data is FilterResponse<*>) {
+                        val popupLatest = (data as FilterResponse<PopupFilterLatest>).content
+                        Log.d("HomeFragment", "Fetched latest filter popup store: $popupLatest")
+                        popupAdapterLatest.updateFilterData(popupLatest)
+                    }
+                } else {
+                    Log.e("HomeFragment", "Response unsuccessful: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                Log.e("HomeFragment", "Failed to fetch latest popup store", t)
+            }
+        })
+    }
+
+
 }
 
 class FollowRecyclerAdapter (
