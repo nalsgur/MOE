@@ -3,6 +3,7 @@ package com.example.moe.detail.record.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -68,7 +69,7 @@ class RecordFragment(private val recordViewModel: RecordViewModel, private val p
                     binding.phraseTv.visibility = View.GONE
                 }
                 else ->{
-                    if (it.response != null) {
+                    if (it.response!!.isNotEmpty()) {
                         initRecyclerView(it.response)
                         setPageIndex(it.response)
                         binding.recordPb.visibility = View.GONE
@@ -78,6 +79,7 @@ class RecordFragment(private val recordViewModel: RecordViewModel, private val p
                         binding.oldest.visibility = View.VISIBLE
                         binding.latest.visibility = View.VISIBLE
                         binding.phraseTv.visibility = View.VISIBLE
+                        Log.d("record", it.response.toString())
                     } else{
                         binding.recordPb.visibility = View.GONE
                         binding.noResultTv.visibility = View.VISIBLE

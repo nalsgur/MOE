@@ -91,9 +91,9 @@ class SearchResultFragment(private val searchViewModel: SearchViewModel, private
                 val followService = FollowService()
                 if(search.follow){
                     if(search.popupStore){
-                        followService.followPopupStore(2, search.id)
+                        followService.followPopupStore(1, search.id)
                     } else{
-                        followService.followExhibition(2, search.id)
+                        followService.followExhibition(1, search.id)
                     }
                 } else{
                     followService.unfollow(search.id)

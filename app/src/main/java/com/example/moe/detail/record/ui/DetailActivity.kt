@@ -75,6 +75,7 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
                 recordViewModel.getRecordPage(1, search.id)
             }
         }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

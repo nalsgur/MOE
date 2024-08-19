@@ -38,7 +38,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchEt.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH && binding.searchEt.text.length >= 2) {
-                searchViewModel.getSearchData(2, binding.searchEt.text.toString(), 0)
+                searchViewModel.getSearchData(1, binding.searchEt.text.toString(), 0)
                 changeFragment(1)
                 hideKeyboard()
                 true
@@ -52,11 +52,11 @@ class SearchActivity : AppCompatActivity() {
         binding.searchEt.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus && curFragment == 1) {
                 changeFragment(0)
-                searchViewModel.getRecentSearchData(2)
+                searchViewModel.getRecentSearchData(1)
             }
         }
 
-        searchViewModel.getRecentSearchData(2)
+        searchViewModel.getRecentSearchData(1)
 
         binding.root.setOnTouchListener { _, _ ->
             hideKeyboard()
