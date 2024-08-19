@@ -21,7 +21,7 @@ class ExTopLikedAdapter(
             when (item) {
                 is ExhibitionTopLiked -> {
                     binding.itemTitleTx.text = if (item.name.length > 8) {
-                        "${item.name.substring(0, 11)} ..."
+                        "${item.name.substring(0, 9)} ..."
                     } else {
                         item.name
                     }
@@ -47,7 +47,7 @@ class ExTopLikedAdapter(
                 }
                 is ExFilterTopLike -> {
                     binding.itemTitleTx.text = if (item.name.length > 8) {
-                        "${item.name.substring(0, 11)} ..."
+                        "${item.name.substring(0, 9)} ..."
                     } else {
                         item.name
                     }
