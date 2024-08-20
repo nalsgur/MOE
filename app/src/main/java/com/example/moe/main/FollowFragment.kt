@@ -61,10 +61,10 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
         binding = FragmentFollowBinding.inflate(inflater,container,false)
 
         val recyclerview = binding.followRv
+65
+        setupRecyclerView() //수진님 코드
 
-        setupRecyclerView()
-
-        loadData(isTopLiked = true)
+        loadData(isTopLiked = true) //수진님 코드
 
 //        val itemlist = ArrayList<FollowItem>()
 //        itemlist.add(FollowItem("기안도1","12.13"))
@@ -141,6 +141,8 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
 
     }
 
+
+    //수진님 코드
     private fun setupRecyclerView() {
         exAdapterTopLiked = ExTopLikedAdapter(isTopLiked = true)
         exAdapterLatest = ExLatestAdapter(isTopLiked = true)
@@ -148,6 +150,7 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
         popupAdapterLatest = PopupLatestAdapter(isTopLiked = true)
     }
 
+    //수진님 코드
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -164,7 +167,7 @@ class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
         }
     }
 
-
+    //수진님 코드
     private fun loadData(region: String? = null, district: String? =null, isTopLiked: Boolean = true) {
         val exTopLikedCall: Call<Any> = when {
             region != null && district != null && !isTopLiked -> {
