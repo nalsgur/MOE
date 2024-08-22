@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.moe.main.MainActivity
+import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.ActivityLoginBinding
 import com.example.moe.login.loginManager.DefaultLoginManager
@@ -68,8 +68,9 @@ class LoginActivity : AppCompatActivity() {
                 //defaultLoginManager.login(phoneNumber, password)
                 if(phoneNumber.length==11 && password.length>=8) {
                     Toast.makeText(this, "로그인 성공하셨습니다.", Toast.LENGTH_SHORT).show()
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(Intent(this, MainActivity::class.java))
-                    finish()
+
                 } else if (phoneNumber.length!=11) {
                     Toast.makeText(this, "아이디가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
                 } else  {

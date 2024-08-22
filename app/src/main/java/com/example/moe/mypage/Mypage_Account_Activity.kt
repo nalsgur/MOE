@@ -9,11 +9,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.moe.main.MainActivity
+import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.WithdrawalDialogInterface
 import com.example.moe.Withdrawal_Dialog
 import com.example.moe.databinding.ActivityMypageAccountBinding
+import com.example.moe.login.LoginActivity
 
 class Mypage_Account_Activity : AppCompatActivity(), WithdrawalDialogInterface {
     private lateinit var binding : ActivityMypageAccountBinding
@@ -80,7 +81,9 @@ class Mypage_Account_Activity : AppCompatActivity(), WithdrawalDialogInterface {
 
     }
     override fun onAddButtonClicked() {
-        Toast.makeText(this, "추가", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "탈퇴되었습니다.", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this@Mypage_Account_Activity, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onCancelButtonClicked() {

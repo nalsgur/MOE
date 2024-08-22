@@ -60,7 +60,7 @@
             android:name=".detail.search.ui.SearchActivity"
             android:exported="false"/>
         <activity
-            android:name=".main.MainActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".login.NewpwActivity"
@@ -79,6 +79,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

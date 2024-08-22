@@ -18,6 +18,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.moe.MainAPI.SharedViewModel
+import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.FragmentMapBinding
 import com.example.moe.detail.search.ui.SearchActivity

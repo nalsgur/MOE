@@ -21,7 +21,7 @@ class PopupLatestAdapter(
         fun bind(item: Any) {
             when(item) {
                 is PopupStoresLatest -> {
-                    binding.itemTitleTx.text = if (item.name.length > 8) {
+                    binding.itemTitleTx.text = if (item.name.length > 11) {
                         "${item.name.substring(0, 11)} ..."
                     } else {
                         item.name

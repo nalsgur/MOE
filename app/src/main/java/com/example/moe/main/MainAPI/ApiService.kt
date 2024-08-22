@@ -1,7 +1,9 @@
 package com.example.moe.MainAPI
 
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
@@ -17,7 +19,6 @@ interface ApiService {
 
     @GET("popupStores/latest")
     fun getLatestPopup(): Call<DataResponse<PopupStoresLatest>>
-
 
     // 필터링 있는 경우
     @GET("exhibitions/top-liked")

@@ -30,6 +30,7 @@ class ExTopLikedAdapter(
                         .load(item.photoUrl)
                         .into(binding.itemImg)
 
+
                     binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
 
                     binding.itemHeart.setImageResource(

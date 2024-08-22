@@ -1,5 +1,6 @@
 package com.example.moe.main
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,11 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.FragmentFollowBinding
 import com.example.moe.databinding.ItemFollowBinding
@@ -23,7 +28,7 @@ import com.example.moe.main.MainAPI.FollowCardAdapter
 import com.example.moe.main.MainAPI.FollowCardItem
 import kotlin.math.abs
 
-class FollowFragment : Fragment() {
+class FollowFragment() : Fragment() {
     private lateinit var binding : FragmentFollowBinding
     private lateinit var items: List<FollowCardItem>
     private lateinit var adapter: FollowCardAdapter
@@ -35,37 +40,9 @@ class FollowFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFollowBinding.inflate(inflater,container,false)
 
-
         val recyclerview = binding.followRv
 
-        val itemlist = ArrayList<FollowItem>()
-        itemlist.add(FollowItem("기안도1","12.13"))
-        itemlist.add(FollowItem("기안도2","12.13"))
-        itemlist.add(FollowItem("기안도3","12.13"))
-        itemlist.add(FollowItem("기안도4","12.13"))
-
-        val followadapter = FollowRecyclerAdapter(itemlist)
-        followadapter.notifyDataSetChanged()
-
-
-        recyclerview.adapter = followadapter
         recyclerview.layoutManager = GridLayoutManager(context,2)
-
-        var changemode = false
-        binding.followChangemode.setOnClickListener {
-            changemode = !changemode
-            if(changemode){
-                //카드모드로 변경
-                binding.followChangemode.setImageResource(R.drawable.follow_changemode_after)
-                binding.followRv.visibility = View.GONE
-                binding.cardModeContainer.visibility = View.VISIBLE
-            } else {
-                //기본모드로 변경
-                binding.followChangemode.setImageResource(R.drawable.follow_changemode)
-                binding.followRv.visibility = View.VISIBLE
-                binding.cardModeContainer.visibility = View.GONE
-            }
-        }
 
         var isnew = 0
         var isold = 0
@@ -101,16 +78,16 @@ class FollowFragment : Fragment() {
                 binding.followBtn2.setImageResource(R.drawable.follow_btn2)
             }
         }
-        
+
 
         //뒤로가기 클릭시
         binding.followBackbtn.setOnClickListener {
             (activity as MainActivity).binding.mainBtv.selectedItemId = R.id.fragment_home
         }
 
-        //홈버튼 클릭시
-        binding.followHomebtn.setOnClickListener {
-
+        //마이페이지 버튼 클릭시
+        binding.followMypagebtn.setOnClickListener {
+            (activity as MainActivity).binding.mainBtv.selectedItemId = R.id.fragment_mypage
         }
 
         //검색버튼 클릭시
@@ -205,9 +182,6 @@ class FollowFragment : Fragment() {
 
         binding.viewPager2.setCurrentItem(2000, false)
     }
-
-
-
 }
 
 class FollowRecyclerAdapter (

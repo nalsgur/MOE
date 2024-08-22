@@ -17,7 +17,7 @@ class ItemAdapter(
                 .load(item.imageUrl)
                 .into(binding.itemImg)
 
-            binding.itemTitleTx.text = if(item.title.length > 8) {
+            binding.itemTitleTx.text = if(item.title.length > 11) {
                 "${item.title.substring(0, 11)} ..."
             } else { item.title }
 
