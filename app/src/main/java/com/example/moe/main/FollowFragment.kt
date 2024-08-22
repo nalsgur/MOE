@@ -44,7 +44,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowFragment(private val viewModel: SearchViewModel) : Fragment() {
+class FollowFragment() : Fragment() {
     private lateinit var binding : FragmentFollowBinding
     private val apiService by lazy { RetrofitClient.HomeApiService() }
     private lateinit var sharedViewModel: SharedViewModel
