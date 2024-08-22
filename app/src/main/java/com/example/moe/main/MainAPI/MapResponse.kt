@@ -4,17 +4,10 @@ import com.google.gson.annotations.SerializedName
 import java.time.LocalDateTime
 
 data class FilterResponse<T>(
-    @SerializedName("totalElements") val totalElements: Int,
-    @SerializedName("totalPages") val totalPages: Int,
-    @SerializedName("pageable") val pageable: Any,
-    @SerializedName("size") val size: Int,
-    @SerializedName("content") val content: List<T>,
-    @SerializedName("number") val number: Int,
-    @SerializedName("sort") val sort: Any,
-    @SerializedName("numberOfElements") val numberOfElements : Int,
-    @SerializedName("first") val first : Boolean,
-    @SerializedName("last") val last : Boolean,
-    @SerializedName("empty") val empty : Boolean
+    @SerializedName("topLikedExhibitions") val topLikedExhibitions : List<ExFilterTopLike>,
+    @SerializedName("latestExhibitions") val latestExhibitions : List<ExFilterLatest>,
+    @SerializedName("topLikedPopupStores") val topLikedPopupStores : List<PopupFilterTopLike>,
+    @SerializedName("latestPopupStores") val latestPopupStores : List<PopupFilterLatest>
 )
 
 data class ExFilterTopLike(
@@ -22,10 +15,10 @@ data class ExFilterTopLike(
     @SerializedName("name") val name: String,
     @SerializedName("place") val place: String,
     @SerializedName("description") val description: String,
-    @SerializedName("photoUrl") val photoUrl: String?,
+    @SerializedName("photoUrl") val photoUrl: String,
     @SerializedName("startDate") val startDate: String,
     @SerializedName("endDate") val endDate: String,
-    @SerializedName("hert") var heart: Boolean = false,
+    @SerializedName("heart") var heart: Boolean,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )
@@ -38,7 +31,7 @@ data class ExFilterLatest(
     @SerializedName("photoUrl") val photoUrl: String?,
     @SerializedName("startDate") val startDate: String,
     @SerializedName("endDate") val endDate: String,
-    @SerializedName("hert") var heart: Boolean = false,
+    @SerializedName("heart") var heart: Boolean,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )
@@ -51,7 +44,7 @@ data class PopupFilterTopLike(
     @SerializedName("photoUrl") val photoUrl: String?,
     @SerializedName("startDate") val startDate: String,
     @SerializedName("endDate") val endDate: String,
-    @SerializedName("hert") var heart: Boolean = false,
+    @SerializedName("heart") var heart: Boolean,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )
@@ -64,7 +57,7 @@ data class PopupFilterLatest(
     @SerializedName("photoUrl") val photoUrl: String?,
     @SerializedName("startDate") val startDate: String,
     @SerializedName("endDate") val endDate: String,
-    @SerializedName("hert") var heart: Boolean = false,
+    @SerializedName("heart") var heart: Boolean,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )

@@ -10,67 +10,43 @@ import com.example.moe.detail.search.entities.Search
 
 class ExTopLikedAdapter(
     private var exhibitions: List<ExhibitionTopLiked> = emptyList(),
-    private var filterExhibitions: List<ExFilterTopLike> = emptyList(),
-    private val isTopLiked: Boolean
+    private val sharedViewModel: SharedViewModel
 ) : RecyclerView.Adapter<ExTopLikedAdapter.ViewHolder>() {
 
     var onItemClickListener: ((Search) -> Unit)? = null
 
     inner class ViewHolder(private val binding: ItemShowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Any) {
-            when (item) {
-                is ExhibitionTopLiked -> {
-                    binding.itemTitleTx.text = if (item.name.length > 8) {
-                        "${item.name.substring(0, 11)} ..."
-                    } else {
-                        item.name
-                    }
+        fun bind(item: ExhibitionTopLiked) {
 
-                    Glide.with(binding.itemImg.context)
-                        .load(item.photoUrl)
-                        .into(binding.itemImg)
+            binding.itemTitleTx.text = if (item.name.length > 11) {
+                "${item.name.substring(0, 11)} ..."
+            } else {
+                item.name
+            }
 
-                    binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
+            Glide.with(binding.itemImg.context)
+                .load(item.photoUrl)
+                .into(binding.itemImg)
 
-                    binding.itemHeart.setImageResource(
-                        if (item.heart) R.drawable.main_full_heart2 else R.drawable.main_heart2
-                    )
+            binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
 
-                    binding.itemHeart.setOnClickListener {
-                        item.heart = !item.heart
-                        notifyItemChanged(adapterPosition)
-                    }
+            val isLiked = sharedViewModel.getHeartStatus("topLiked", item.id.toString())
+            binding.itemHeart.setImageResource(
+                if (isLiked) R.drawable.main_full_heart2 else R.drawable.main_heart2
+            )
 
-                    binding.root.setOnClickListener {
-                        onItemClickListener?.invoke(item.toSearch())
-                    }
-                }
-                is ExFilterTopLike -> {
-                    binding.itemTitleTx.text = if (item.name.length > 8) {
-                        "${item.name.substring(0, 11)} ..."
-                    } else {
-                        item.name
-                    }
 
-                    Glide.with(binding.itemImg.context)
-                        .load(item.photoUrl)
-                        .into(binding.itemImg)
+            binding.itemHeart.setOnClickListener {
+                val newStatus = !isLiked
+                sharedViewModel.UpdateHeartStatus("topLiked", item.id.toString(), newStatus)
+                sharedViewModel.followUpdateHeartStatus("topLiked", item.id.toString(), item.name, newStatus)
+                binding.itemHeart.setImageResource(
+                    if (newStatus) R.drawable.main_full_heart2 else R.drawable.main_heart2
+                )
+            }
 
-                    binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
-
-                    binding.itemHeart.setImageResource(
-                        if (item.heart) R.drawable.main_full_heart2 else R.drawable.main_heart2
-                    )
-
-                    binding.itemHeart.setOnClickListener {
-                        item.heart = !item.heart
-                        notifyItemChanged(adapterPosition)
-                    }
-
-                    binding.root.setOnClickListener {
-                        onItemClickListener?.invoke(item.toSearch())
-                    }
-                }
+            binding.root.setOnClickListener {
+                onItemClickListener?.invoke(item.toSearch())
             }
 
         }
@@ -82,16 +58,11 @@ class ExTopLikedAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val exhibition = if (isTopLiked) {
-            exhibitions[position]
-        } else {
-            filterExhibitions[position]
-        }
-        holder.bind(exhibition)
+        holder.bind(exhibitions[position])
     }
 
     override fun getItemCount(): Int {
-        return if (isTopLiked) exhibitions.size else filterExhibitions.size
+        return exhibitions.size
     }
 
     fun updateDefaultData(newData: List<ExhibitionTopLiked>) {
@@ -99,25 +70,9 @@ class ExTopLikedAdapter(
         notifyDataSetChanged()
     }
 
-    fun updateFilterData(newData: List<ExFilterTopLike>) {
-        this.filterExhibitions = newData
-        notifyDataSetChanged()
-    }
 }
 
 private fun ExhibitionTopLiked.toSearch(): Search {
-    return Search(
-        id = this.id,
-        title = this.name,
-        photo = this.photoUrl ?: "",
-        startDate = this.startDate,
-        endDate = this.endDate,
-        follow = this.heart,
-        popupStore = false
-    )
-}
-
-private fun ExFilterTopLike.toSearch(): Search {
     return Search(
         id = this.id,
         title = this.name,

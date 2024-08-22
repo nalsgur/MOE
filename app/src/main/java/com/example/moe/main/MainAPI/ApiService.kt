@@ -20,51 +20,28 @@ interface ApiService {
 
 
     // 필터링 있는 경우
-    @GET("exhibitions/top-liked")
+    @GET("main/filter")
     fun getFilteredTopLikedEx(
-        @Query("regions") region: String,
+        @Query("region") region: String,
         @Query("district") district: String
     ): Call<FilterResponse<ExFilterTopLike>>
 
-    @GET("exhibitions/latest")
+    @GET("main/filter")
     fun getFilteredLatestEx(
-        @Query("regions") region: String,
+        @Query("region") region: String,
         @Query("district") district: String
     ): Call<FilterResponse<ExFilterLatest>>
 
-    @GET("popupStores/top-liked")
+    @GET("main/filter")
     fun getFilteredTopLikedPopup(
-        @Query("regions") region: String,
+        @Query("region") region: String,
         @Query("district") district: String
     ): Call<FilterResponse<PopupFilterTopLike>>
 
-    @GET("popupStores/latest")
+    @GET("main/filter")
     fun getFilteredLatestPopup(
-        @Query("regions") region: String,
+        @Query("region") region: String,
         @Query("district") district: String
     ): Call<FilterResponse<PopupFilterLatest>>
 
-//    @GET("main/filter")
-//    fun getFilteredTopLikedEx(
-//        @Query("regions") region: String,
-//        @Query("district") district: String
-//    ): Call<FilterResponse<ExFilterTopLike>>
-//
-//    @GET("main/filter")
-//    fun getFilteredLatestEx(
-//        @Query("regions") region: String,
-//        @Query("district") district: String
-//    ): Call<FilterResponse<ExFilterTopLike>>
-//
-//    @GET("main/filter")
-//    fun getFilteredTopLikedPopup(
-//        @Query("regions") region: String,
-//        @Query("district") district: String
-//    ): Call<FilterResponse<PopupFilterLatest>>
-//
-//    @GET("main/filter")
-//    fun getFilteredLatestPopup(
-//        @Query("regions") region: String,
-//        @Query("district") district: String
-//    ): Call<FilterResponse<PopupFilterLatest>>
 }

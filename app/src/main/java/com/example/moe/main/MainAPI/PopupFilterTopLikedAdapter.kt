@@ -1,23 +1,24 @@
-package com.example.moe.MainAPI
+package com.example.moe.main.MainAPI
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.moe.MainAPI.PopupFilterTopLike
+import com.example.moe.MainAPI.PopupStoresTopLiked
+import com.example.moe.MainAPI.SharedViewModel
 import com.example.moe.R
 import com.example.moe.databinding.ItemShowBinding
 import com.example.moe.detail.search.entities.Search
 
-class PopupLatestAdapter(
-    private var popupStores: List<PopupStoresLatest> = emptyList(),
+class PopupFilterTopLikedAdapter(
+    private var popupStores: List<PopupFilterTopLike> = emptyList(),
     private val sharedViewModel: SharedViewModel
-) : RecyclerView.Adapter<PopupLatestAdapter.ViewHolder>() {
-
+) : RecyclerView.Adapter<PopupFilterTopLikedAdapter.ViewHolder>() {
     var onItemClickListener: ((Search) -> Unit)? = null
 
-    inner class ViewHolder(private val binding: ItemShowBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: PopupStoresLatest) {
+    inner class ViewHolder(private val binding: ItemShowBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: PopupFilterTopLike) {
 
             binding.itemTitleTx.text = if (item.name.length > 11) {
                 "${item.name.substring(0, 11)} ..."
@@ -31,15 +32,15 @@ class PopupLatestAdapter(
 
             binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
 
-            val isLiked = sharedViewModel.getHeartStatus("popupLatest", item.id.toString())
+            val isLiked = sharedViewModel.getHeartStatus("popupFilterTopLiked", item.id.toString())
             binding.itemHeart.setImageResource(
                 if (isLiked) R.drawable.main_full_heart2 else R.drawable.main_heart2
             )
 
             binding.itemHeart.setOnClickListener {
                 val newStatus = !isLiked
-                sharedViewModel.UpdateHeartStatus("popupLatest", item.id.toString(), newStatus)
-                sharedViewModel.followUpdateHeartStatus("popupLatest", item.id.toString(), item.name, newStatus)
+                sharedViewModel.UpdateHeartStatus("popupFilterTopLiked", item.id.toString(), newStatus)
+                sharedViewModel.followUpdateHeartStatus("popupFilterTopLiked", item.id.toString(), item.name, newStatus)
                 binding.itemHeart.setImageResource(
                     if (newStatus) R.drawable.main_full_heart2 else R.drawable.main_heart2
                 )
@@ -63,15 +64,13 @@ class PopupLatestAdapter(
 
     override fun getItemCount(): Int = popupStores.size
 
-    fun updateDefaultData(newData: List<PopupStoresLatest>) {
+    fun updateFilterData(newData: List<PopupFilterTopLike>) {
         this.popupStores = newData
         notifyDataSetChanged()
     }
-
-
 }
 
-private fun PopupStoresLatest.toSearch(): Search {
+private fun PopupFilterTopLike.toSearch(): Search {
     return Search(
         id = this.id,
         title = this.name,
@@ -82,4 +81,3 @@ private fun PopupStoresLatest.toSearch(): Search {
         popupStore = true
     )
 }
-
