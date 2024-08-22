@@ -24,7 +24,7 @@ data class ExhibitionTopLiked(
     @SerializedName("photoUrl") val photoUrl : String?,
     @SerializedName("startDate") val startDate : String,
     @SerializedName("endDate") val endDate : String,
-    @SerializedName("heart") var heart : Boolean = false,
+    @SerializedName("heart") var heart : Boolean,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )
@@ -37,7 +37,7 @@ data class ExhibitionLatest(
     @SerializedName("photoUrl") val photoUrl : String?,
     @SerializedName("startDate") val startDate : String,
     @SerializedName("endDate") val endDate : String,
-    @SerializedName("heart") var heart : Boolean = false,
+    @SerializedName("heart") var heart : Boolean,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )
@@ -50,7 +50,7 @@ data class PopupStoresTopLiked(
     @SerializedName("photoUrl") val photoUrl : String?,
     @SerializedName("startDate") val startDate : String,
     @SerializedName("endDate") val endDate : String,
-    @SerializedName("heart") var heart : Boolean = false,
+    @SerializedName("heart") var heart : Boolean,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )
@@ -63,7 +63,7 @@ data class PopupStoresLatest(
     @SerializedName("photoUrl") val photoUrl : String?,
     @SerializedName("startDate") val startDate : String,
     @SerializedName("endDate") val endDate : String,
-    @SerializedName("heart") var heart : Boolean = false,
+    @SerializedName("heart") var heart : Boolean ,
     @SerializedName("regions") val region: String,
     @SerializedName("district") val district: String
 )

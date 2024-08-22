@@ -11,67 +11,42 @@ import com.example.moe.detail.search.entities.Search
 
 class PopupTopLikedAdapter(
     private var popupStores: List<PopupStoresTopLiked> = emptyList(),
-    private var filterPopupStores: List<PopupFilterTopLike> = emptyList(),
-    private val isTopLiked: Boolean
+    private val sharedViewModel: SharedViewModel
 ) : RecyclerView.Adapter<PopupTopLikedAdapter.ViewHolder>() {
 
     var onItemClickListener: ((Search) -> Unit)? = null
 
     inner class ViewHolder(private val binding: ItemShowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Any) {
-            when(item) {
-                is PopupStoresTopLiked -> {
-                    binding.itemTitleTx.text = if (item.name.length > 11) {
-                        "${item.name.substring(0, 11)} ..."
-                    } else {
-                        item.name
-                    }
+        fun bind(item: PopupStoresTopLiked) {
 
-                    Glide.with(binding.itemImg.context)
-                        .load(item.photoUrl)
-                        .into(binding.itemImg)
+            binding.itemTitleTx.text = if (item.name.length > 11) {
+                "${item.name.substring(0, 11)} ..."
+            } else {
+                item.name
+            }
 
-                    binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
+            Glide.with(binding.itemImg.context)
+                .load(item.photoUrl)
+                .into(binding.itemImg)
 
-                    binding.itemHeart.setImageResource(
-                        if (item.heart) R.drawable.main_full_heart2 else R.drawable.main_heart2
-                    )
+            binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
 
-                    binding.itemHeart.setOnClickListener {
-                        item.heart = !item.heart
-                        notifyItemChanged(adapterPosition)
-                    }
+            val isLiked = sharedViewModel.getHeartStatus("popupTopLiked", item.id.toString())
+            binding.itemHeart.setImageResource(
+                if (isLiked) R.drawable.main_full_heart2 else R.drawable.main_heart2
+            )
 
-                    binding.root.setOnClickListener {
-                        onItemClickListener?.invoke(item.toSearch())
-                    }
-                }
-                is PopupFilterTopLike -> {
-                    binding.itemTitleTx.text = if (item.name.length > 8) {
-                        "${item.name.substring(0, 11)} ..."
-                    } else {
-                        item.name
-                    }
+            binding.itemHeart.setOnClickListener {
+                val newStatus = !isLiked
+                sharedViewModel.UpdateHeartStatus("popupTopLiked", item.id.toString(), newStatus)
+                sharedViewModel.followUpdateHeartStatus("popupTopLiked", item.id.toString(), item.name, newStatus)
+                binding.itemHeart.setImageResource(
+                    if (newStatus) R.drawable.main_full_heart2 else R.drawable.main_heart2
+                )
+            }
 
-                    Glide.with(binding.itemImg.context)
-                        .load(item.photoUrl)
-                        .into(binding.itemImg)
-
-                    binding.itemDateTx.text = "${item.startDate} ~ ${item.endDate}"
-
-                    binding.itemHeart.setImageResource(
-                        if (item.heart) R.drawable.main_full_heart2 else R.drawable.main_heart2
-                    )
-
-                    binding.itemHeart.setOnClickListener {
-                        item.heart = !item.heart
-                        notifyItemChanged(adapterPosition)
-                    }
-
-                    binding.root.setOnClickListener {
-                        onItemClickListener?.invoke(item.toSearch())
-                    }
-                }
+            binding.root.setOnClickListener {
+                onItemClickListener?.invoke(item.toSearch())
             }
 
         }
@@ -83,12 +58,7 @@ class PopupTopLikedAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val popupStore = if (isTopLiked) {
-            popupStores[position]
-        } else {
-            filterPopupStores[position]
-        }
-        holder.bind(popupStore)
+        holder.bind(popupStores[position])
     }
 
     override fun getItemCount(): Int = popupStores.size
@@ -98,25 +68,9 @@ class PopupTopLikedAdapter(
         notifyDataSetChanged()
     }
 
-    fun updateFilterData(newData: List<PopupFilterTopLike>) {
-        this.filterPopupStores = newData
-        notifyDataSetChanged()
-    }
 }
 
 private fun PopupStoresTopLiked.toSearch(): Search {
-    return Search(
-        id = this.id,
-        title = this.name,
-        photo = this.photoUrl ?: "",
-        startDate = this.startDate,
-        endDate = this.endDate,
-        follow = this.heart,
-        popupStore = true
-    )
-}
-
-private fun PopupFilterTopLike.toSearch(): Search {
     return Search(
         id = this.id,
         title = this.name,
