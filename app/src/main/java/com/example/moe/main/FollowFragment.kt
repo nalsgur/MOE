@@ -36,6 +36,7 @@ import com.example.moe.MainAPI.PopupStoresTopLiked
 import com.example.moe.MainAPI.PopupTopLikedAdapter
 import com.example.moe.MainAPI.RetrofitClient
 import com.example.moe.MainAPI.SharedViewModel
+import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.FragmentFollowBinding
 import com.example.moe.databinding.ItemFollowBinding
@@ -87,9 +88,9 @@ class FollowFragment : Fragment() {
         recyclerview.adapter = combinedAdapter
         recyclerview.layoutManager = GridLayoutManager(context,2)
 
-        loadData() //수진님 코드(수정)
 
         setupViewPager() // CardMode : 추가
+        loadData() //수진님 코드(수정)
 
         // 상태 유지 flag 추가
         if (savedInstanceState != null) {
@@ -204,6 +205,7 @@ class FollowFragment : Fragment() {
 
         binding.viewPager2.setPageTransformer(transformer)
     }
+
 
     // CardMode: 아이템 이동 시 위치 업로드 + 아이템 제목과 날짜 업로드
     private fun setPageChangeCallback() {
