@@ -19,31 +19,48 @@ import com.bumptech.glide.Glide
 import com.example.moe.R
 import com.example.moe.databinding.ActivityWriteBinding
 import com.example.moe.detail.record.entities.Memo
+import com.example.moe.detail.record.entities.Photo
+import com.example.moe.detail.record.entities.RecordPage
 import com.example.moe.detail.record.entities.RecordPhoto
 import com.example.moe.detail.record.remote.RecordService
 import com.example.moe.detail.record.remote.RecordViewModel
+import kotlin.properties.Delegates
 
 class WriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWriteBinding
     private val recordViewModel: RecordViewModel by viewModels()
+    private val memo: MutableList<String> = mutableListOf()
+    private lateinit var recordPage: RecordPage
+    private var recordPhotoId = 1
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWriteBinding.inflate(layoutInflater)
-        //val recordPhotoId = intent.getIntExtra("recordPhotoId", 1)
+        recordPhotoId = intent.getIntExtra("recordPhotoId", 1)
         //val recordPageId = intent.getIntExtra("recordPageId", 1)
         //recordViewModel.getRecordPhoto(1, recordPageId, recordPhotoId)
-        //ecordViewModel.getRecordPage(1, recordPageId)
+        //recordViewModel.getRecordPage(1, recordPageId)
+        recordPage = intent.getParcelableExtra("response")!!
+
+        memo.addAll(
+            listOf(
+                "재미있었다!!",
+                "완전 꿀잼",
+                "오 대박",
+                "이거 좀 치는듯",
+                "모에모에큥",
+                "다운 받고 싶다..",
+                "",
+                "",
+            )
+        )
 
         val record = RecordPhoto(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/300px-Cat_November_2010-1a.jpg",
-            "재미있었다."
+            recordPhoto = recordPage.recordPhoto!![recordPhotoId],
+            recordPhotoBody = memo[recordPhotoId]
         )
-        val recordPhoto = listOf(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/300px-Cat_November_2010-1a.jpg"
-        )
-        initView(record, recordPhoto)
+        initView(record, recordPage.recordPhoto!!)
 
 
         binding.et.addTextChangedListener(object : TextWatcher {
@@ -63,10 +80,11 @@ class WriteActivity : AppCompatActivity() {
 
         binding.writeEndBtn.setOnClickListener {
             Toast.makeText(this, "성공적으로 등록되었습니다.", Toast.LENGTH_SHORT).show()
-            val recordService = RecordService()
-            val memo = Memo(binding.et.text.toString())
+//            val recordService = RecordService()
+//            val memo = Memo(binding.et.text.toString())
 //            recordService.record(recordPageId, recordPhotoId, memo)
-            recordService.record(1, 1, memo)
+//            recordService.record(1, 1, memo)
+            memo[recordPhotoId] = binding.et.text.toString()
             binding.writeEndBtn.isEnabled = false
             binding.writeEndBtn.setBackgroundResource(R.drawable.write_end_bg_default)
             binding.writeEndBtn.setTextColor(ContextCompat.getColor(this, R.color.navy))
@@ -135,6 +153,7 @@ class WriteActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initView(response: RecordPhoto, photos: List<String>) {
         binding.homeLoadingCt.visibility = View.GONE
         binding.writeImage.visibility = View.VISIBLE
@@ -154,6 +173,18 @@ class WriteActivity : AppCompatActivity() {
         if(response.recordPhotoBody != null){
             binding.et.setText(response.recordPhotoBody)
         }
+
+        adapter.setMyItemClickListener(object : DetailPhotoRVAdapter.MyItemClickListener{
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onClickItem(position: Int) {
+                recordPhotoId = position
+                Glide.with(this@WriteActivity).load(recordPage.recordPhoto!![position]).into(binding.writeImage)
+                if(memo.size > recordPhotoId){
+                    binding.et.setText(memo[position])
+                }
+            }
+
+        })
     }
 
     private fun checkEndBtn() {
