@@ -33,6 +33,7 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
     private lateinit var binding: ActivityDetailBinding
     private lateinit var search: Search
     private val recordViewModel: RecordViewModel by viewModels()
+    private val photo: MutableList<String> = mutableListOf()
 
     private val requestPermissions = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
         results.entries.forEach{
@@ -55,24 +56,26 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
 
             if (clipData != null && clipData.itemCount > 1) {
                 // 여러 장의 이미지를 선택한 경우
-                val recordService = RecordService()
-                val imageUris = mutableListOf<String>()
+                //val recordService = RecordService()
+                //val imageUris = mutableListOf<String>()
                 for (i in 0 until clipData.itemCount) {
                     val imageUri = clipData.getItemAt(i).uri
-                    imageUris.add(imageUri.toString())
+                    photo.add(imageUri.toString())
                 }
-                val photo = Photo(imageUris)
-                recordService.uploadPhoto(search.id, photo)
-                recordViewModel.getRecordPage(1, search.id)
+                //val photo = Photo(imageUris)
+//                recordService.uploadPhoto(search.id, photo)
+                recordViewModel.setRecordPage(search, photo)
+//                recordViewModel.getRecordPage(1, search.id)
             } else if (data?.data != null) {
                 // 단일 이미지를 선택한 경우
                 val imageUri = data.data
                 Log.d("DETAIL_ACTIVITY", "Selected URI: ${imageUri.toString()}")
-                val photo = Photo(listOf(imageUri.toString()))
-                Log.d("DETAIL_ACTIVITY", "Photo object: $photo")
-                val recordService = RecordService()
-                recordService.uploadPhoto(search.id, photo)
-                recordViewModel.getRecordPage(1, search.id)
+//                val photo = Photo(listOf(imageUri.toString()))
+                photo.add(imageUri.toString())
+//                val recordService = RecordService()
+//                recordService.uploadPhoto(search.id, photo)
+                recordViewModel.setRecordPage(search, photo)
+//                recordViewModel.getRecordPage(1, search.id)
             }
         }
 
@@ -84,7 +87,20 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
 
         search = intent.getParcelableExtra("search")!!
 
-        recordViewModel.getRecordPage(1, search.id)
+        //recordViewModel.getRecordPage(1, search.id)
+        if (search.id == 6 || search.id== 40){
+            photo.addAll(
+                listOf(
+                    "https://velog.velcdn.com/images/wjdwlsdl321/post/21a6ef66-20c0-4c86-b786-8adb3165d285/image.jpeg",
+                    "https://velog.velcdn.com/images/wjdwlsdl321/post/874ed1a5-19c2-4917-a38f-fd7238ea74d9/image.jpeg",
+                    "https://velog.velcdn.com/images/wjdwlsdl321/post/e3a37998-2496-4f0c-8dfe-2266df7a8554/image.jpeg",
+                    "https://velog.velcdn.com/images/wjdwlsdl321/post/bf1a8edc-4ac4-44cc-85f5-8b1015b06a05/image.jpeg",
+                    "https://velog.velcdn.com/images/wjdwlsdl321/post/f13c6a74-b426-4ddd-938d-3927342c5022/image.jpeg",
+                    "https://velog.velcdn.com/images/wjdwlsdl321/post/f9967e97-9b66-4587-9e38-993b6b24e703/image.jpeg"
+                )
+            )
+            recordViewModel.setRecordPage(search, photo)
+        }
 
         Glide.with(this)
             .load(search.photo)
@@ -129,12 +145,10 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
         binding.recordBtn.setOnClickListener {
             requestStorage()
         }
-        response.recordPhoto = listOf(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cat_November_2010-1a.jpg/300px-Cat_November_2010-1a.jpg"
-        )
+
         val photoAdapter = PhotoRVAdapter(response.recordPhoto!!)
         binding.photoRv.layoutManager =
-            GridLayoutManager(this, 4, GridLayoutManager.HORIZONTAL, false)
+            GridLayoutManager(this, 4, GridLayoutManager.VERTICAL, false)
         binding.photoRv.adapter = photoAdapter
 
         recordViewModel.recordPageState.observe(this){
@@ -145,7 +159,8 @@ class DetailActivity() : AppCompatActivity(), ConfirmDialogInterface {
             override fun onClickItem(position: Int) {
                 val intent = Intent(this@DetailActivity, WriteActivity::class.java)
                 intent.putExtra("recordPhotoId", position)
-                intent.putExtra("recordPageId", search.id)
+                intent.putExtra("response", response)
+                //intent.putExtra("recordPageId", search.id)
                 startActivity(intent)
             }
         })

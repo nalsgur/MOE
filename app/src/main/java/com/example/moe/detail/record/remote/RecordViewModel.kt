@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.moe.detail.record.entities.Record
 import com.example.moe.detail.record.entities.RecordPage
 import com.example.moe.detail.record.entities.RecordPhoto
+import com.example.moe.detail.search.entities.Search
+import com.example.moe.follow.entities.Follow
 import kotlinx.coroutines.launch
 
 class RecordViewModel(): ViewModel() {
@@ -27,8 +29,24 @@ class RecordViewModel(): ViewModel() {
 
     init {
         _recordState.value = RecordState()
-        _recordPageState.value = RecordPageState()
+        _recordPageState.value = RecordPageState(
+
+        )
         _recordPhotoState.value = RecordPhotoState()
+    }
+
+    fun setRecordPage(search: Search, photo : List<String>){
+        _recordPageState.value = _recordPageState.value?.copy(
+            loading = false,
+            error = null,
+            response = RecordPage(
+                name = search.title,
+                photo = search.photo,
+                startDate = search.startDate,
+                endDate = search.endDate,
+                recordPhoto = photo
+            )
+        )
     }
 
 
@@ -45,7 +63,7 @@ class RecordViewModel(): ViewModel() {
                         loading = false,
                         error = null
                     )
-                    Log.d("getRecordLatest", "SUCCESS")
+                    Log.d("getRecordLatest", response.body().toString())
                 }else{
                     Log.d("getRecordLatest", response.message())
                 }

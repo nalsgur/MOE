@@ -15,6 +15,7 @@ import com.example.moe.MainActivity
 import com.example.moe.R
 import com.example.moe.databinding.FragmentRecordBinding
 import com.example.moe.detail.PageViewModel
+import com.example.moe.detail.follow.remote.FollowService
 import com.example.moe.detail.record.entities.Record
 import com.example.moe.detail.record.remote.RecordViewModel
 import com.example.moe.detail.search.entities.Search
@@ -39,8 +40,10 @@ class RecordFragment(private val recordViewModel: RecordViewModel, private val p
         binding.searchIcon.setOnClickListener {
             startActivity(Intent(requireContext(), SearchActivity::class.java))
         }
+
         return binding.root
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -122,7 +125,19 @@ class RecordFragment(private val recordViewModel: RecordViewModel, private val p
             }
 
             override fun onClickHeart(record: Record) {
-                TODO("Not yet implemented")
+//                viewModel.setLike(1)
+//                search.follow = !search.follow
+//                adapter.notifyDataSetChanged()
+//                val followService = FollowService()
+//                if(search.follow){
+//                    if(search.popupStore){
+//                        followService.followPopupStore(1, search.id)
+//                    } else{
+//                        followService.followExhibition(1, search.id)
+//                    }
+//                } else{
+//                    followService.unfollow(search.id)
+//                }
             }
 
         })
